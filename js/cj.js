@@ -26,7 +26,7 @@ position: 1,
 13: {
             name: "a3",
             done() { return player.p.points.gte(1) }, 
-            tooltip: "正式开始(p增加了，去看看b的获取公式有什么变化?)达成要求:p>=1",
+            tooltip: "正式开始(p增加了，去看看b的获取公式有什么变化?)达成要求:p>=1(在1e7s解锁p)",
         }, 
 14: {
             name: "a4",

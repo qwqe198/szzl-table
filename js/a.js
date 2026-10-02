@@ -30,7 +30,7 @@ if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
        11: {
             description: `a加成s获取.`,
             effect() {
-                var g = player.a.points.add(1).log10().add(1.25).pow(3)
+                var g = player.a.points.add(1).log10().add(1.25).pow(3.5)
 
                 return g
             },
@@ -46,7 +46,7 @@ if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
  buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
-                var c = n(100000000).mul(n(10).pow(x.pow(1.4)))
+                var c = n(250000).mul(n(10).pow(x.pow(1.4)))
 
                 return c
             },

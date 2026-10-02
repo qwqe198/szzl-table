@@ -32,7 +32,7 @@ buyables: {
 
                 return c
             },
-            display() { return `p获取<br />x${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}a<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            display() { return `p获取<br />x${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}b<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
             canAfford() { return player.b.points.gte(this.cost()) },
             buy() {
                
