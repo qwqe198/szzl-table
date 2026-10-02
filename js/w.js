@@ -39,12 +39,32 @@ addLayer("w", {
 12: {
             description: `w加成s获取.`,
             effect() {
-                var g = player.w.points.add(1).log10().add(1.25).pow(2)
+                var g = player.w.points.add(1).log10().add(1.25).pow(5)
 
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
             cost: n(0.5),
+        }, 
+13: {
+            description: `w加成a获取.`,
+            effect() {
+                var g = player.w.points.add(1).log10().add(1.25)
+
+                return g
+            },
+            effectDisplay() { return `x${format(this.effect())}` },
+            cost: n(1),
+        }, 
+14: {
+            description: `w加成b获取.`,
+            effect() {
+                var g = player.w.points.add(1).log10().add(1.25).pow(3)
+
+                return g
+            },
+            effectDisplay() { return `x${format(this.effect())}` },
+            cost: n(1),
         }, 
     },
  buyables: {
@@ -73,5 +93,5 @@ addLayer("w", {
        "blank",
        ["microtabs","tab"]
     ],
-    layerShown(){return hasUpgrade("p",14)||hasAchievement('cj',15)},
+    layerShown(){return  player.p.points.gte(100)||hasAchievement('cj',15)},
 })

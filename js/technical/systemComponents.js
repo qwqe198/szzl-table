@@ -168,48 +168,48 @@ var systemComponents = {
         <h1>{{i18n(modInfo.name, modInfo.nameI18N)}}</h1>
         <br><br><br>
 
-        <h2>{{i18n("参与人员", "Authors", false)}}:</h2><br><br>
+        <h2>{{i18n("参与人员", "参与人员", false)}}:</h2><br><br>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("本模组作者", "Mod Author", false)}}:</h3><br>
+			<h3>{{i18n("本模组作者", "本模组作者", false)}}:</h3><br>
 			{{ modInfo.author }}<br><br>
-			<h6 style="color:#aaa">({{i18n("本Mod基于辉影神秘的The Modding Table制作", "Based On Shinwmyste\'s The Modding Table", false)}})</h6>
+			<h6 style="color:#aaa">({{i18n("本Mod基于辉影神秘的The Modding Table制作", "本Mod基于辉影神秘的The Modding Table制作", false)}})</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("模组页作者", "The Modding Table Author", false)}}:</h3><br>
-			辉影神秘<br><br><h6 style="color:#aaa">({{i18n("制作", "Developed", false)}} The Modding Table <a v-bind:href="'https://github.com/shenmi124/The-Modding-Table/blob/main/changelog.md'" target="_blank" class="link" v-bind:style = "{'font-size': '10px', 'display': 'inline'}">{{TMT_VERSION.newtmtNum}}</a>)</h6>
+			<h3>{{i18n("模组页作者", "模组页作者", false)}}:</h3><br>
+			辉影神秘<br><br><h6 style="color:#aaa">({{i18n("制作", "制作", false)}} The Modding Table <a v-bind:href="'https://github.com/shenmi124/The-Modding-Table/blob/main/changelog.md'" target="_blank" class="link" v-bind:style = "{'font-size': '10px', 'display': 'inline'}">{{TMT_VERSION.newtmtNum}}</a>)</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("模组页版本", "The Modding Table Version", false)}}:</h3><br>
+			<h3>{{i18n("模组页版本", "模组页版本", false)}}:</h3><br>
 			<a v-bind:href="'https://github.com/shenmi124/The-Modding-Table/blob/main/changelog.md'" target="_blank" class="link" v-bind:style = "{'display': 'inline'}">{{TMT_VERSION.newtmtNum}}</a><br><br>
-			<h6 style="color:#aaa">({{i18n("同时感谢QwQe308的参与制作", "Also Thanks To QwQe308 For Their Help", false)}})</h6>
+			<h6 style="color:#aaa">({{i18n("同时感谢QwQe308的参与制作", "同时感谢QwQe308的参与制作", false)}})</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("模板支持", "Original TMT Author", false)}}:</h3><br>
+			<h3>{{i18n("模板支持", "模板支持", false)}}:</h3><br>
 			Acamaeda<br><br>
 			<h6 style="color:#aaa">(The Modding Tree <a v-bind:href="'https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md'" target="_blank" class="link" v-bind:style = "{'font-size': '10px', 'display': 'inline'}">{{TMT_VERSION.tmtNum}}</a>)</h6>
 		</div>
 		<br><br><br><br>
 		
-        <h2>{{i18n("其他页面", "Other Pages", false)}}:</h2><br><br>
+        <h2>{{i18n("其他页面", "其他页面", false)}}:</h2><br><br>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("更新日志", "Changelog", false)}}:</h3><br>
-			<a class="link" onclick="showTab('changelog-tab');getActiveClass('Changelog')">{{i18n("点击跳转", "Click Here", false)}}</a><br>
-			<h6 style="color:#aaa">({{i18n("其实也可以点右上角的版本号", "The Top-Right Version Button Matters", false)}})</h6>
+			<h3>{{i18n("更新日志", "更新日志", false)}}:</h3><br>
+			<a class="link" onclick="showTab('changelog-tab');getActiveClass('Changelog')">{{i18n("点击跳转", "点击跳转", false)}}</a><br>
+			<h6 style="color:#aaa">({{i18n("其实也可以点右上角的版本号", "其实也可以点右上角的版本号", false)}})</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("辉影神秘的Discord", "Shinwmyste's Discord", false)}}:</h3><br>
-			<a class="link" href="https://discord.gg/DTJYvatRQA" target="_blank">{{i18n("点击跳转", "Click Here", false)}}</a><br>
-			<h6 style="color:#aaa">({{i18n("加入DC群", "Join Discord", false)}})</h6>
+			<h3>{{i18n("辉影神秘的Discord", "辉影神秘的Discord", false)}}:</h3><br>
+			<a class="link" href="https://discord.gg/DTJYvatRQA" target="_blank">{{i18n("点击跳转", "点击跳转", false)}}</a><br>
+			<h6 style="color:#aaa">({{i18n("加入DC群", "加入DC群", false)}})</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("捐助页面", "Donate Page", false)}}:</h3><br>
-			<a class="link" href="https://afdian.com/a/Shinwmyste" target="_blank">{{i18n("点击跳转", "Click Here", false)}}</a><br>
+			<h3>{{i18n("捐助页面", "捐助页面", false)}}:</h3><br>
+			<a class="link" href="https://afdian.com/a/Shinwmyste" target="_blank">{{i18n("点击跳转", "点击跳转", false)}}</a><br>
 			<h6 style="color:#aaa">($_$)</h6>
 		</div>
 		<div style="border: 3px solid #888; width:300px; height:30px; margin-top: 8px; padding:15px; border-radius: 5px; display: inline-table">
-			<h3>{{i18n("模组树官方Discord", "The Modding Tree Discord", false)}}:</h3><br>
-			<a class="link" href="https://discord.gg/F3xveHV" target="_blank">{{i18n("点击跳转", "Click Here", false)}}</a><br>
-			<h6 style="color:#aaa">({{i18n("就是这些", "That\'s all", false)}})</h6>
+			<h3>{{i18n("模组树官方Discord", "模组树官方Discord", false)}}:</h3><br>
+			<a class="link" href="https://discord.gg/F3xveHV" target="_blank">{{i18n("点击跳转", "点击跳转", false)}}</a><br>
+			<h6 style="color:#aaa">({{i18n("就是这些", "就是这些", false)}})</h6>
 		</div>
     `
     },
@@ -218,23 +218,23 @@ var systemComponents = {
         template: ` 
         <table><br><br><br><br><br><br>
             <tr>
-				<td><h1>{{i18n('存档', 'Save', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
-				<td><button class="opt" onclick="save()">{{i18n('本地存档', 'Save', false)}}</button></td>
-                <td><button class="opt" onclick="toggleOpt('autosave')">{{i18n('自动存档', 'AutoSave', false)}}: {{ options.autosave?(i18n("已开启", "ON", false)):(i18n("已关闭", "OFF", false)) }}</button></td>
-                <td><button class="opt" onclick="hardReset()">{{i18n('硬重置(删除存档)', 'HardReset', false)}}</button></td>
-				<td><button class="opt" onclick="exportSave()">{{i18n('导出存档(复制到黏贴板)', 'Export', false)}}</button></td>
-				<td><button class="opt" onclick="importSave()">{{i18n('导入存档', 'Import', false)}}</button></td>
+				<td><h1>{{i18n('存档', '存档', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
+				<td><button class="opt" onclick="save()">{{i18n('本地存档', '本地存档', false)}}</button></td>
+                <td><button class="opt" onclick="toggleOpt('autosave')">{{i18n('自动存档', '自动存档', false)}}: {{ options.autosave?(i18n("已开启", "已开启", false)):(i18n("已关闭", "已关闭", false)) }}</button></td>
+                <td><button class="opt" onclick="hardReset()">{{i18n('硬重置(删除存档)', '硬重置(删除存档)', false)}}</button></td>
+				<td><button class="opt" onclick="exportSave()">{{i18n('导出存档(复制到黏贴板)', '导出存档(复制到黏贴板)', false)}}</button></td>
+				<td><button class="opt" onclick="importSave()">{{i18n('导入存档', '导入存档', false)}}</button></td>
 			</tr><br>
 			<tr>
-				<td><h1>{{i18n('优化', 'Qol', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
-                <td><button class="opt" onclick="toggleOpt('offlineProd')">{{i18n('离线进度', 'Offline Prod', false)}}: {{ options.offlineProd?(i18n("已开启", "ON", false)):(i18n("已关闭", "OFF", false)) }}</button></td>
-                <td><button class="opt" onclick="toggleOpt('mouse')">{{i18n('优化鼠标操作', 'Optimized mouse operation', false)}}: {{ options.mouse ? (i18n("已开启", "ON", false)):(i18n("已关闭", "OFF", false))}}</button></td>
+				<td><h1>{{i18n('优化', '优化', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
+                <td><button class="opt" onclick="toggleOpt('offlineProd')">{{i18n('离线进度', '离线进度', false)}}: {{ options.offlineProd?(i18n("已开启", "已开启", false)):(i18n("已关闭", "已关闭", false)) }}</button></td>
+                <td><button class="opt" onclick="toggleOpt('mouse')">{{i18n('优化鼠标操作', '优化鼠标操作', false)}}: {{ options.mouse ? (i18n("已开启", "已开启", false)):(i18n("已关闭", "已关闭", false))}}</button></td>
             </tr><br>
             <tr>
-				<td><h1>{{i18n('显示', 'Display', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
-                <td><button class="opt" onclick="toggleOpt('hideChallenges')">{{i18n('已完成挑战', 'Completed Challenges', false)}}: {{ options.hideChallenges?(i18n("隐藏", "HIDDI18N", false)):(i18n("显示", "SHOWN", false)) }}</button></td>
-                <td><button class="opt" onclick="adjustMSDisp()">{{ i18n('显示里程碑', 'Show Milestones', false) }}: {{ i18n(MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)], MS_DISPLAYS_I18N[MS_SETTINGS.indexOf(options.msDisplay)], false)}}</button></td>
-                <td><button class="opt" onclick="toggleOpt('cursive')">{{i18n('全页面草书字体', 'Cursive Font', false)}}: {{ options.cursive?(i18n("已开启", "ON", false)):(i18n("已关闭", "OFF", false)) }}<br><h6>{{ i18n("(注: 字体会根据你的浏览器的默认字体而改变, 对于不同浏览器可能会有不同效果, 对于部分浏览器可能无效)", "(Note: The font will change according to your browser's default font. Effects may vary across different browsers, and may not work in some browsers)", false)}}</h6></button></td>
+				<td><h1>{{i18n('显示', '显示', false)}}&nbsp;&nbsp;&nbsp;</h1></td>
+                <td><button class="opt" onclick="toggleOpt('hideChallenges')">{{i18n('已完成挑战', '已完成挑战', false)}}: {{ options.hideChallenges?(i18n("隐藏", "隐藏", false)):(i18n("显示", "显示", false)) }}</button></td>
+                <td><button class="opt" onclick="adjustMSDisp()">{{ i18n('显示里程碑', '显示里程碑', false) }}: {{ i18n(MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)], MS_DISPLAYS[MS_SETTINGS.indexOf(options.msDisplay)], false)}}</button></td>
+                <td><button class="opt" onclick="toggleOpt('cursive')">{{i18n('全页面草书字体', '全页面草书字体', false)}}: {{ options.cursive?(i18n("已开启", "已开启", false)):(i18n("已关闭", "已关闭", false)) }}<br><h6>{{ i18n("(注: 字体会根据你的浏览器的默认字体而改变, 对于不同浏览器可能会有不同效果, 对于部分浏览器可能无效)", "(注: 字体会根据你的浏览器的默认字体而改变, 对于不同浏览器可能会有不同效果, 对于部分浏览器可能无效)", false)}}</h6></button></td>
 			</tr> <br>
 			<tr>
 				<td><h1>{{modInfo.internationalizationMod?(i18n('语言', 'language', false)):""}}&nbsp;&nbsp;&nbsp;</h1></td>

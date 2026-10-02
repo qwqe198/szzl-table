@@ -21,6 +21,7 @@ addLayer("a", {
         g = new Decimal(1)
 if(hasUpgrade("b",12))g=g.mul(upgradeEffect("b",12))
 if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
+if(hasUpgrade("w",13))g=g.mul(upgradeEffect("w",13))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -46,7 +47,7 @@ if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
  buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
-                var c = n(250000).mul(n(10).pow(x.pow(1.4)))
+                var c = n(1000000).mul(n(10).pow(x.pow(1.4)))
 
                 return c
             },
@@ -91,4 +92,5 @@ if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
        ["microtabs","tab"]
     ],
     layerShown(){return true},
+autoUpgrade() { return hasAchievement("cj", 15) },
 })

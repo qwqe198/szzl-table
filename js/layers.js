@@ -58,7 +58,7 @@ addLayer("2layer", {
         ["display-text", function() { return getPointsDisplay() }]
     ],
 })
-addLayer("2layer", {
+addLayer("3layer", {
     name: "sideLayer2",
     position: -1,
     row: 3,

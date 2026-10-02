@@ -21,6 +21,7 @@ addLayer("p", {
         g = new Decimal(1)
 g = g.mul(buyableEffect('a', 11))
 g = g.mul(buyableEffect('b', 11))
+if(hasUpgrade("w",11))g=g.mul(upgradeEffect("w",11))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -56,11 +57,6 @@ g = g.mul(buyableEffect('b', 11))
             },
             effectDisplay() { return `x${format(this.effect())}` },
             cost: n(1),
-        }, 
-14: {
-            description: `解锁w.`,
-           
-            cost: n(100),
         }, 
     },
     hotkeys: [

@@ -20,6 +20,7 @@ addLayer("b", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
        g = new Decimal(1)
 if(hasUpgrade("p",13))g=g.mul(upgradeEffect("p",13))
+if(hasUpgrade("w",14))g=g.mul(upgradeEffect("w",14))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -95,4 +96,5 @@ buyables: {
        ["microtabs","tab"]
     ],
     layerShown(){return hasUpgrade("a",12)||hasAchievement('cj',13)},
+autoUpgrade() { return hasAchievement("cj", 15) },
 })

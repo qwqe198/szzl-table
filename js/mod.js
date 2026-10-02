@@ -46,21 +46,16 @@ let VERSION = {
 }
 
 function changelog(){
-	return i18n(`
+	return `
 		<br><br><br><h1>更新日志:</h1><br>(不存在<span style='color: red'><s>剧透警告</s></span>)<br><br>
 		<span style="font-size: 17px;">
 			<h3><s>你应该自己写这个</s></h3><br><br>
 			<h3>v3.0 - 史无前例的改动</h3><br>
 				- 开发了 The Modding Table, 这何尝不是一种TMT<br>
-			<br><br>
-		`, `
-		<br><br><br><h1>ChangeLog:</h1><br>(No<span style='color: red'><s> Spoiler Warning!</s></span>)<br><br>
-		<span style="font-size: 17px;">
-			<h3><s>YOU SHOULD WRITE THIS YOURSELF</s></h3><br><br>
-			<h3>v3.0 - Unprecedented changes</h3><br>
-				- Developed The Modding Table, Which, you could say, is another form of TMT<br>
-			<br><br>
-	`, false)
+			<br><br>`
+		
+		
+	
 } 
 
 function winText(){
@@ -88,6 +83,7 @@ function getPointGen() {
 if(hasUpgrade("a",11))g=g.mul(upgradeEffect("a",11))
 if(hasUpgrade("b",11))g=g.mul(upgradeEffect("b",11))
 if(hasUpgrade("p",11))g=g.mul(upgradeEffect("p",11))
+if(hasUpgrade("w",12))g=g.mul(upgradeEffect("w",12))
 	return g
 }
 
@@ -119,13 +115,13 @@ function getPointsDisplay(){
 		a += options.ch ? '<br>时间加速: '+format(player.devSpeed)+'x' : '<br>Dev Speed: '+format(player.devSpeed)+'x'
 	}
 	if(player.offTime!==undefined){
-		a += options.ch ? '<br>离线加速剩余时间: '+formatTime(player.offTime.remain) : '<br>Offline Time: '+formatTime(player.offTime.remain)
+		a += options.ch ? '<br>离线加速剩余时间: '+formatTime(player.offTime.remain) : '<br>离线加速剩余时间: '+formatTime(player.offTime.remain)
 	}
 	a += '<br>'
 	if(!(options.ch==undefined && modInfo.internationalizationMod==true)){
-		a += `<span class="overlayThing">${(i18n("你有", "You have", false))} <h2 class="overlayThing" id="points"> ${format(player.points)}</h2> ${i18n(modInfo.pointsName, modInfo.pointsNameI18N)}</span>`
+		a += `<span class="overlayThing">${(i18n("你有", "你有", false))} <h2 class="overlayThing" id="points"> ${format(player.points)}</h2> ${i18n(modInfo.pointsName, modInfo.pointsNameI18N)}</span>`
 		if(canGenPoints()){
-			a += `<br><span class="overlayThing">(`+(tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OoM" + (tmp.other.oompsMag < 0 ? "^OoM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen()))+`/sec)</span>`
+			a += `<br><span class="overlayThing">(`+(tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OoM" + (tmp.other.oompsMag < 0 ? "^OoM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "秒" : formatSmall(getPointGen()))+`/sec)</span>`
 		}
 		a += `<div style="margin-top: 3px"></div>`
 	}
