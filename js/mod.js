@@ -51,7 +51,7 @@ function changelog(){
 		<span style="font-size: 17px;">
 			<h3><s>你应该自己写这个</s></h3><br><br>
 			<h3>v3.0 - 史无前例的改动</h3><br>
-				- 开发了 The Modding Table, 这何尝不是一种TMT<br>
+				- 当前残局：完成a8<br>
 			<br><br>`
 		
 		

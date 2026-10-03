@@ -9,7 +9,7 @@ addLayer("a", {
 		points: new Decimal(0),
     }},
     color: "#4BDC13",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+   requires() { return  hasAchievement('cj',17) ? new Decimal(1) : new Decimal(10) },
     resource: "a", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on
@@ -32,7 +32,7 @@ if(hasUpgrade("w",13))g=g.mul(upgradeEffect("w",13))
             description: `a加成s获取.`,
             effect() {
                 var g = player.a.points.add(1).log10().add(1.25).pow(3.5)
-
+g = g.pow(buyableEffect('w', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -48,7 +48,7 @@ if(hasUpgrade("w",13))g=g.mul(upgradeEffect("w",13))
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
                 var c = n(1000000).mul(n(10).pow(x.pow(1.4)))
-
+if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.4))
                 return c
             },
             display() { return `p获取<br />x${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}a<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },

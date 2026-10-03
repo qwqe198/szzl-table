@@ -9,7 +9,7 @@ addLayer("b", {
 		points: new Decimal(0),
     }},
     color: "#4BDC13",
- requires() { return hasAchievement('cj',13) ? new Decimal(100) : new Decimal(250) },
+ requires() { return hasAchievement('cj',17) ? new Decimal(1): hasAchievement('cj',13) ? new Decimal(100) : new Decimal(250) },
     resource: "b", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on
@@ -30,7 +30,7 @@ buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
                 var c = n(1000).mul(n(10).pow(x.pow(1.3)))
-
+if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.3))
                 return c
             },
             display() { return `p获取<br />x${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}b<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
@@ -55,7 +55,7 @@ buyables: {
             description: `b加成s获取.`,
             effect() {
                 var g = player.b.points.add(1).log10().add(1.25).pow(4)
-
+g = g.pow(buyableEffect('w', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },

@@ -68,7 +68,28 @@ addLayer("w", {
         }, 
     },
  buyables: {
-        
+        11: {
+            cost(x = getBuyableAmount(this.layer, this.id)) {
+                var c = n(1400).mul(n(1.4).pow(x.pow(1.4)))
+
+                return c
+            },
+            display() { return `使a,b对s的加成<br />^${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}w<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            canAfford() { return player.w.points.gte(this.cost()) },
+            buy() {
+               
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            title() {
+                return ""
+            },
+            effect(x = getBuyableAmount(this.layer, this.id)) {
+                var eff = x.mul(0.07).add(1)
+
+                return eff
+            },
+            unlocked() { return hasAchievement('cj',17) },
+        },
     },
     hotkeys: [
         {key: "w", description: "w: 进行w重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
