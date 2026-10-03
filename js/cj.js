@@ -56,7 +56,7 @@ position: 1,
 19: {
             name: "a9",
             done() { return player.points.gte(8.8e27) }, 
-            tooltip: "最后一步!(可观测宇宙的直径(这里取930亿光年)约为8.8e27m,无穷之前的最后一个成就,自动a,b购买项,在p解锁一个可购买,p重置要求为1)达成要求:s>=8.8e27",
+            tooltip: "最后一步!(可观测宇宙的直径(这里取930亿光年)约为8.8e27m,无穷之前的最后一个成就,自动a,b购买项,在p解锁一个可购买)达成要求:s>=8.8e27",
         },
 21: {
             name: "a10",
@@ -66,8 +66,23 @@ position: 1,
 22: {
             name: "a11",
             done() { return getBuyableAmount("a1", 12).gte(1) }, 
-            tooltip: "解放双手！(现在游戏的性质变了，从放置变成增量游戏）达成要求：购买a&b点击器",
-        },             
+            tooltip: "解放双手！(现在游戏的性质变了，从放置变成增量游戏,p重置要求为1）达成要求：购买a&b点击器",
+        },
+23: {
+            name: "a12",
+            done() { return player.points.gte(1.16e77) }, 
+            tooltip: "2-INFINITE(你的毅力难以置信,s获取x10,解锁挑战1,在挑战中获得尽可能高的s以获得加成，但是挑战1到4内p,w,α对s的加成失效)达成要求:s>=1.16e77",
+        },
+24: {
+            name: "a13",
+            done() { return player.a1.challenges[11]>0.33 }, 
+            tooltip: "开始挑战(最困难的挑战，往往只需最简单的阻碍(其实并不难))达成要求:Ψ1(挑战1分数)>0.33",
+        },  
+25: {
+            name: "a14",
+            done() { return player.points.gte(1.71e98) }, 
+            tooltip: "69!(完美的数字！解锁挑战2)达成要求:s>=1.71e98",
+        },           
     },
     tabFormat: [
         "blank",

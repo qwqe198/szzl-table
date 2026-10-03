@@ -9,7 +9,7 @@ addLayer("p", {
 		points: new Decimal(0),
     }},
     color: "#13dcc5",
-    requires() { return hasAchievement('cj',10) ? new Decimal(1): new Decimal(1e7) },
+    requires() { return hasAchievement('cj',22) ? new Decimal(1): new Decimal(1e7) },
     resource: "p", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on
@@ -34,6 +34,7 @@ if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
             effect() {
                 var g = player.p.points.add(2).log10().add(1.25).pow(6)
 g = g.pow(buyableEffect('p', 11))
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -77,9 +78,9 @@ buyables: {
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = x.mul(0.07).add(1)
+                var g = x.mul(0.07).add(1)
 
-                return eff
+                return g
             },
             unlocked() { return hasAchievement('cj',19) },
         },

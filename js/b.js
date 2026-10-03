@@ -44,9 +44,9 @@ if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.3))
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = n(1.5).pow(x)
+                var g = n(1.5).pow(x)
 
-                return eff
+                return g
             },
             unlocked() { return hasAchievement('cj',14) },
         },

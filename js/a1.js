@@ -31,6 +31,7 @@ addLayer("a1", {
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(5)
 g = g.pow(buyableEffect('a1', 11))
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -94,9 +95,9 @@ buyables: {
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = x.mul(0.05).add(1)
-
-                return eff
+                var g = x.mul(0.05).add(1)
+if(g.gte(2))g=g.div(2).add(1)
+                return g
             },
             unlocked() { return hasAchievement('cj',19) },
         },
@@ -116,9 +117,9 @@ buyables: {
                 return "a&b点击器"
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = x.min(20)
+                var g = x.min(20)
 
-                return eff
+                return g
             },
             unlocked() { return hasAchievement('cj',19) },
         },
@@ -133,11 +134,39 @@ buyables: {
                 nameI18N(){return 'main'}, // Second name for internationalization (i18n) if internationalizationMod is enabled
                            content: [
  "buyables",
+"challenges",
                 "upgrades",
             ],
             },
            
         },
+    },
+ challenges: {
+        11: {
+            name() { return '挑战1'},
+            challengeDescription() { return 'a对s的加成^0.3,退出挑战时基于挑战内最高s获得分数.'},
+            rewardDescription() { 
+                return `分数:${format(challengeEffect("a1", 11))}，加成a,w获取`
+            },
+            rewardEffect() {
+let g=n(0)
+              if(inChallenge("a1",11))  g=g.max(player.points.add(1).log10().div(38.53))
+
+return g.max(player.a1.challenges[11])
+            },
+            goal: 0,
+ goalDescription() {
+                return "更多s"
+            },
+            onExit() {
+                player.a1.challenges[11] = player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 11)).max(0)
+            },
+            completionLimit: "1F9999",
+            canComplete() { return true },
+            resource() { return player.points },
+            unlocked() { return  hasAchievement('cj',23) }
+        },
+
     },
     tabFormat: [
        ["display-text", function() { return getPointsDisplay() }],

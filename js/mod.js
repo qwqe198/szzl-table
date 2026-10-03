@@ -53,7 +53,7 @@ function changelog(){
 			<h3>v3.0 - 史无前例的改动</h3><br>
 - 本游戏借鉴于iwanna上的数字增量，原作者是暗，qq群号622963897<br>
 - 注：本改版有部分内容和原游戏不一样<br>
-				- 当前残局：完成a11<br>
+				- 当前残局：完成a14<br>
 			<br><br>`
 		
 		
@@ -87,6 +87,7 @@ if(hasUpgrade("b",11))g=g.mul(upgradeEffect("b",11))
 if(hasUpgrade("p",11))g=g.mul(upgradeEffect("p",11))
 if(hasUpgrade("w",12))g=g.mul(upgradeEffect("w",12))
 if(hasUpgrade("a1",11))g=g.mul(upgradeEffect("a1",11))
+if(hasAchievement("cj",23))g=g.mul(10)
 	return g
 }
 

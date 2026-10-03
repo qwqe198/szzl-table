@@ -22,8 +22,10 @@ addLayer("w", {
 if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
         return g
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+     gainExp() { // Calculate the exponent on main currency from bonuses
+       g = new Decimal(1)
+if(hasAchievement('cj',23))g = g.add(challengeEffect("a1", 11).add(1).root(2).sub(1))
+        return g
     },
     upgrades: {
        11: {
@@ -41,6 +43,7 @@ if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
             effect() {
                 var g = player.w.points.add(1).log10().add(1.25).pow(5)
 g = g.pow(buyableEffect('p', 11))
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -84,9 +87,9 @@ g = g.pow(buyableEffect('p', 11))
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = x.mul(0.07).add(1)
-
-                return eff
+                var g = x.mul(0.07).add(1)
+if(g.gte(2.5))g=g.div(2.5).add(1.5)
+                return g
             },
             unlocked() { return hasAchievement('cj',17) },
         },

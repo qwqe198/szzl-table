@@ -143,8 +143,8 @@ function loadVue() {
 			<span v-if="layers[layer].challenges[data].fullDisplay" v-html="run(layers[layer].challenges[data].fullDisplay, layers[layer].challenges[data])"></span>
 			<span v-else>
 				<span v-html="i18n(tmp[layer].challenges[data].challengeDescription, tmp[layer].challenges[data].challengeDescriptionI18N)"></span>
-				{{i18n('目标', 'Goal', false)}}:  <span v-if="tmp[layer].challenges[data].goalDescription" v-html="tmp[layer].challenges[data].goalDescription"></span><span v-else>{{format(tmp[layer].challenges[data].goal)}} {{tmp[layer].challenges[data].currencyDisplayName ? tmp[layer].challenges[data].currencyDisplayName : i18n(modInfo.pointsName, modInfo.pointsNameI18N)}}</span><br>
-				{{i18n('奖励', 'Reward', false)}}: <span v-html="i18n(tmp[layer].challenges[data].rewardDescription, tmp[layer].challenges[data].rewardDescriptionI18N)"></span><br>
+				{{i18n('目标', '目标', false)}}:  <span v-if="tmp[layer].challenges[data].goalDescription" v-html="tmp[layer].challenges[data].goalDescription"></span><span v-else>{{format(tmp[layer].challenges[data].goal)}} {{tmp[layer].challenges[data].currencyDisplayName ? tmp[layer].challenges[data].currencyDisplayName : i18n(modInfo.pointsName, modInfo.pointsNameI18N)}}</span><br>
+				{{i18n('奖励', '奖励', false)}}: <span v-html="i18n(tmp[layer].challenges[data].rewardDescription, tmp[layer].challenges[data].rewardDescriptionI18N)"></span><br>
 				<span v-if="layers[layer].challenges[data].rewardDisplay!==undefined">{{i18n('当前效果', 'Currently', false)}}: <span v-html="(tmp[layer].challenges[data].rewardDisplay) ? (run(layers[layer].challenges[data].rewardDisplay, layers[layer].challenges[data])) : format(tmp[layer].challenges[data].rewardEffect)"></span></span>
 			</span>
 			<node-mark :layer='layer' :data='tmp[layer].challenges[data].marked' :offset="20" :scale="1.5"></node-mark></span>

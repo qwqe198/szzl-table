@@ -23,10 +23,13 @@ if(hasUpgrade("b",12))g=g.mul(upgradeEffect("b",12))
 if(hasUpgrade("p",12))g=g.mul(upgradeEffect("p",12))
 if(hasUpgrade("w",13))g=g.mul(upgradeEffect("w",13))
 if(hasUpgrade("a1",12))g=g.mul(upgradeEffect("a1",12))
+
         return g
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+   gainExp() { // Calculate the exponent on main currency from bonuses
+       g = new Decimal(1)
+if(hasAchievement('cj',23))g = g.add(challengeEffect("a1", 11))
+        return g
     },
     upgrades: {
        11: {
@@ -34,6 +37,7 @@ if(hasUpgrade("a1",12))g=g.mul(upgradeEffect("a1",12))
             effect() {
                 var g = player.a.points.add(1).log10().add(1.25).pow(3.5)
 g = g.pow(buyableEffect('w', 11))
+if(inChallenge("a1",11))g=g.pow(0.3)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -62,9 +66,9 @@ if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.4))
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var eff = n(1.5).pow(x)
+                var g = n(1.5).pow(x)
 
-                return eff
+                return g
             },
             unlocked() { return hasAchievement('cj',14) },
         },
