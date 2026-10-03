@@ -98,4 +98,8 @@ g = g.pow(buyableEffect('w', 11))
     ],
     layerShown(){return hasUpgrade("a",12)||hasAchievement('cj',13)},
 autoUpgrade() { return hasAchievement("cj", 15) },
+ update(diff) {
+if (hasAchievement("cj", 19)) setBuyableAmount(this.layer, 11, player.b.points.add(1).log10().root(1.3).floor().add(1))
+
+    },
 })

@@ -56,8 +56,13 @@ position: 1,
 19: {
             name: "a9",
             done() { return player.points.gte(8.8e27) }, 
-            tooltip: "最后一步!(可观测宇宙的直径(这里取930亿光年)约为8.8e27m,无穷之前的最后一个成就,自动a,b购买项,在α解锁新东西)达成要求:s>=8.8e27",
-        },            
+            tooltip: "最后一步!(可观测宇宙的直径(这里取930亿光年)约为8.8e27m,无穷之前的最后一个成就,自动a,b购买项,在p解锁一个可购买,p重置要求为1)达成要求:s>=8.8e27",
+        },
+21: {
+            name: "a10",
+            done() { return player.points.gte(3.4e38) }, 
+            tooltip: "INFINITE(无穷啦，不过这并非该游戏的终点，你注意到α有新的资源吗？)达成要求:s>=3.4e38",
+        },             
     },
     tabFormat: [
         "blank",

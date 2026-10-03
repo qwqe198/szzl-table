@@ -16,7 +16,7 @@ addLayer("w", {
     baseResourceI18N: "点数", // Second name of the baseResource for internationalization (i18n) if internationalizationMod is enabled
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 0.4, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
 if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
@@ -40,7 +40,7 @@ if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
             description: `w加成s获取.`,
             effect() {
                 var g = player.w.points.add(1).log10().add(1.25).pow(5)
-
+g = g.pow(buyableEffect('p', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },

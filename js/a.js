@@ -94,4 +94,8 @@ if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.4))
     ],
     layerShown(){return true},
 autoUpgrade() { return hasAchievement("cj", 15) },
+  update(diff) {
+if (hasAchievement("cj", 19)) setBuyableAmount(this.layer, 11, player.a.points.add(1).log10().root(1.4).floor().add(1))
+
+    },
 })

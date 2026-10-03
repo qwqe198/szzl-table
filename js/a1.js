@@ -103,6 +103,6 @@ addLayer("a1", {
        "blank",
        ["microtabs","tab"]
     ],
-    layerShown(){return true},
+    layerShown(){return hasAchievement('cj',18)},
 
 })

@@ -9,7 +9,7 @@ addLayer("p", {
 		points: new Decimal(0),
     }},
     color: "#13dcc5",
-    requires: new Decimal(1e7), // Can be a function that takes requirement increases into account
+    requires() { return hasAchievement('cj',10) ? new Decimal(1): new Decimal(1e7) },
     resource: "p", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on
@@ -33,7 +33,7 @@ if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
             description: `p加成s获取.`,
             effect() {
                 var g = player.p.points.add(2).log10().add(1.25).pow(6)
-
+g = g.pow(buyableEffect('p', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -60,6 +60,30 @@ if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
             cost: n(1),
         }, 
     },
+buyables: {
+        11: {
+            cost(x = getBuyableAmount(this.layer, this.id)) {
+                var c = n(1.5e10).mul(n(1.5).pow(x.pow(1.5)))
+
+                return c
+            },
+            display() { return `使p,w对s的加成<br />^${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}p<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
+            canAfford() { return player.p.points.gte(this.cost()) },
+            buy() {
+               
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            title() {
+                return ""
+            },
+            effect(x = getBuyableAmount(this.layer, this.id)) {
+                var eff = x.mul(0.07).add(1)
+
+                return eff
+            },
+            unlocked() { return hasAchievement('cj',19) },
+        },
+    },
     hotkeys: [
         {key: "p", description: "p: 进行p重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -69,7 +93,7 @@ if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
                 name(){return '主要'}, // Name of tab button
                 nameI18N(){return 'main'}, // Second name for internationalization (i18n) if internationalizationMod is enabled
                            content: [
-
+"buyables",
                 "upgrades",
             ],
             },
