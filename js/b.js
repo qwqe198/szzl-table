@@ -103,6 +103,6 @@ if (hasAchievement("cj", 19)) setBuyableAmount(this.layer, 11, player.b.points.a
 
     },
 passiveGeneration() {
-        return format(buyableEffect("a1", 11), 0)
+        return format(buyableEffect("a1", 12), 0)
     },
 })
