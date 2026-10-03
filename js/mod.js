@@ -51,7 +51,8 @@ function changelog(){
 		<span style="font-size: 17px;">
 			<h3><s>你应该自己写这个</s></h3><br><br>
 			<h3>v3.0 - 史无前例的改动</h3><br>
-				- 当前残局：完成a8<br>
+- 本游戏借鉴于iwanna上的数字增量，原作者是暗，qq群号622963897<br>
+				- 当前残局：完成a9<br>
 			<br><br>`
 		
 		
@@ -84,6 +85,7 @@ if(hasUpgrade("a",11))g=g.mul(upgradeEffect("a",11))
 if(hasUpgrade("b",11))g=g.mul(upgradeEffect("b",11))
 if(hasUpgrade("p",11))g=g.mul(upgradeEffect("p",11))
 if(hasUpgrade("w",12))g=g.mul(upgradeEffect("w",12))
+if(hasUpgrade("a1",11))g=g.mul(upgradeEffect("a1",11))
 	return g
 }
 
@@ -101,7 +103,7 @@ var displayThings = [
 
 // You can write code here to easily display information in the top-left corner
 function displayThingsRes(){
-	return 's: '+format(player.points)+' | '+'a: '+format(player.a.points)+' | '+'b: '+format(player.b.points)+' | '+'P: '+format(player.p.points)
+	return 's: '+format(player.points)+' | '+'a: '+format(player.a.points)+' | '+'b: '+format(player.b.points)+' | '+'P: '+format(player.p.points)+' | '+'w: '+format(player.w.points)+' | '+'α: '+format(player.a1.points)
 }
 
 // Determines when the game "ends"

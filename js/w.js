@@ -19,7 +19,7 @@ addLayer("w", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
-
+if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -114,5 +114,6 @@ addLayer("w", {
        "blank",
        ["microtabs","tab"]
     ],
+autoUpgrade() { return hasAchievement("cj", 18) },
     layerShown(){return  player.p.points.gte(100)||hasAchievement('cj',15)},
 })
