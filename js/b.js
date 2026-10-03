@@ -102,4 +102,7 @@ autoUpgrade() { return hasAchievement("cj", 15) },
 if (hasAchievement("cj", 19)) setBuyableAmount(this.layer, 11, player.b.points.add(1).log10().root(1.3).floor().add(1))
 
     },
+passiveGeneration() {
+        return format(buyableEffect("a1", 11), 0)
+    },
 })

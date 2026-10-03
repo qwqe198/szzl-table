@@ -9,7 +9,7 @@ addLayer("w", {
 		points: new Decimal(0),
     }},
     color: "#dc9613",
-    requires: new Decimal(100), // Can be a function that takes requirement increases into account
+    requires() { return  hasAchievement('cj',21) ? new Decimal(1) : new Decimal(100) },
     resource: "w", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "p", // Name of resource prestige is based on

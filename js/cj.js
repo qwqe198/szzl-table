@@ -61,7 +61,12 @@ position: 1,
 21: {
             name: "a10",
             done() { return player.points.gte(3.4e38) }, 
-            tooltip: "INFINITE(无穷啦，不过这并非该游戏的终点，你注意到α有新的资源吗？)达成要求:s>=3.4e38",
+            tooltip: "INFINITE(无穷啦，不过这并非该游戏的终点，你注意到α有新的资源吗？w重置要求为1)达成要求:s>=3.4e38",
+        },
+22: {
+            name: "a11",
+            done() { return getBuyableAmount("a1", 12).gte(1) }, 
+            tooltip: "解放双手！(现在游戏的性质变了，从放置变成增量游戏）达成要求：购买a&b点击器",
         },             
     },
     tabFormat: [

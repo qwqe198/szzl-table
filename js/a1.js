@@ -30,7 +30,7 @@ addLayer("a1", {
             description: `α加成s获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(5)
-
+g = g.pow(buyableEffect('a1', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -40,7 +40,7 @@ addLayer("a1", {
             description: `α加成a获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(4)
-
+g = g.pow(buyableEffect('a1', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -50,7 +50,7 @@ addLayer("a1", {
             description: `α加成b获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(3)
-
+g = g.pow(buyableEffect('a1', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -60,7 +60,7 @@ addLayer("a1", {
             description: `α加成p获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(2)
-
+g = g.pow(buyableEffect('a1', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -70,15 +70,58 @@ addLayer("a1", {
             description: `α加成w获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2)
-
+g = g.pow(buyableEffect('a1', 11))
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
             cost: n(1),
         }, 
     },
- buyables: {
-      
+buyables: {
+        11: {
+            cost(x = getBuyableAmount(this.layer, this.id)) {
+                var c = n(12).mul(n(1.2).pow(x.pow(1.2)))
+
+                return c
+            },
+            display() { return `获得β(当前:${format(getBuyableAmount(this.layer, this.id), 2)})费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α<br />α对资源的加成^${format(buyableEffect(this.layer, this.id), 2)}` },
+            canAfford() { return player.a1.points.gte(this.cost()) },
+            buy() {
+               
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            title() {
+                return ""
+            },
+            effect(x = getBuyableAmount(this.layer, this.id)) {
+                var eff = x.mul(0.05).add(1)
+
+                return eff
+            },
+            unlocked() { return hasAchievement('cj',19) },
+        },
+12: {
+            cost(x = getBuyableAmount(this.layer, this.id)) {
+                var c = n(1000).mul(n(5).pow(x.pow(1.3)))
+
+                return c
+            },
+            display() { return `每秒获取${format(getBuyableAmount(this.layer, this.id), 2)}倍的a,b，费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α` },
+            canAfford() { return player.a1.points.gte(this.cost()) },
+            buy() {
+               
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            title() {
+                return "a&b点击器"
+            },
+            effect(x = getBuyableAmount(this.layer, this.id)) {
+                var eff = x.min(20)
+
+                return eff
+            },
+            unlocked() { return hasAchievement('cj',19) },
+        },
     },
     hotkeys: [
         {key: "A", description: "Shift+a: 进行α重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
