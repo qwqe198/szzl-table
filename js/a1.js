@@ -265,10 +265,16 @@ return g.max(player.a1.challenges[22])
     },
     tabFormat: [
        ["display-text", function() { return getPointsDisplay() }],
+
        "main-display",
        "prestige-button",
        "blank",
+["display-text", () =>
+                   hasAchievement("cj", 23) ?`挑战1到4内p,w,α对s的加成失效`:``,
+                    { "font-size": "20px" }
+                ],
        ["microtabs","tab"]
+
     ],
     layerShown(){return hasAchievement('cj',18)},
 

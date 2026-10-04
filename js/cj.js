@@ -71,7 +71,7 @@ position: 1,
 23: {
             name: "a12",
             done() { return player.points.gte(1.16e77) }, 
-            tooltip: "2-INFINITE(你的毅力难以置信,s获取x10,解锁挑战1,在挑战中获得尽可能高的s以获得加成，但是挑战1到4内p,w,α对s的加成失效)达成要求:s>=1.16e77",
+            tooltip: "2-INFINITE(你的毅力难以置信,s获取x10,解锁挑战1,在挑战中获得尽可能高的s以获得加成)达成要求:s>=1.16e77",
         },
 24: {
             name: "a13",
