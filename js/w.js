@@ -24,7 +24,8 @@ if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
     },
      gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
-if(hasAchievement('cj',23))g = g.add(challengeEffect("a1", 11).add(1).root(2).sub(1))
+if(hasAchievement('cj',23))g = g.add(layers.a1.c1eff().add(1).root(2).sub(1))
+if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().add(1).root(2).sub(1)))
         return g
     },
     upgrades: {
@@ -74,7 +75,7 @@ if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
                 var c = n(1400).mul(n(1.4).pow(x.pow(1.4)))
-
+if(hasAchievement('cj',25))c=n(1.4).pow(x.pow(1.4))
                 return c
             },
             display() { return `使a,b对s的加成<br />^${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}w<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
@@ -88,7 +89,7 @@ if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.mul(0.07).add(1)
-if(g.gte(2.5))g=g.div(2.5).add(1.5)
+if(g.gte(2.5)&&!hasAchievement('cj',26))g=g.div(2.5).add(1.5)
                 return g
             },
             unlocked() { return hasAchievement('cj',17) },

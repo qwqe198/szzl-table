@@ -23,10 +23,14 @@ g = g.mul(buyableEffect('a', 11))
 g = g.mul(buyableEffect('b', 11))
 if(hasUpgrade("w",11))g=g.mul(upgradeEffect("w",11))
 if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
+if(inChallenge("a1",21))g=n(0)
         return g
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+   gainExp() { // Calculate the exponent on main currency from bonuses
+       g = new Decimal(1)
+if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().add(1).root(2).sub(1)))
+if(inChallenge("a1",12))g=g.mul(0.2)
+        return g
     },
     upgrades: {
        11: {
@@ -65,7 +69,7 @@ buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
                 var c = n(1.5e10).mul(n(1.5).pow(x.pow(1.5)))
-
+if(hasAchievement('cj',25))c=n(1.5).pow(x.pow(1.5))
                 return c
             },
             display() { return `使p,w对s的加成<br />^${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}p<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },

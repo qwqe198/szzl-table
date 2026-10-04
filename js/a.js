@@ -28,7 +28,8 @@ if(hasUpgrade("a1",12))g=g.mul(upgradeEffect("a1",12))
     },
    gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
-if(hasAchievement('cj',23))g = g.add(challengeEffect("a1", 11))
+if(hasAchievement('cj',23))g = g.add((layers.a1.c1eff()))
+if(hasAchievement('cj',25))g = g.mul((layers.a1.c3eff().add(1)))
         return g
     },
     upgrades: {

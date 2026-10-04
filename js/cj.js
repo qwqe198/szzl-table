@@ -81,8 +81,23 @@ position: 1,
 25: {
             name: "a14",
             done() { return player.points.gte(1.71e98) }, 
-            tooltip: "69!(完美的数字！解锁挑战2)达成要求:s>=1.71e98",
-        },           
+            tooltip: "69!(完美的数字！解锁挑战2,p,w购买价格基础为1)达成要求:s>=1.71e98",
+        },
+26: {
+            name: "a15",
+            done() { return player.points.gte(1.7e120) }, 
+            tooltip: "四维三阶魔方(似乎用排列组合的方式可以轻松创造出大数字，解锁挑战三,移除w购买效果的第一个软上限)达成要求:s>=1.7e120",
+        },
+27: {
+            name: "a16",
+            done() { return player.points.gte(1.41e174) }, 
+            tooltip: "Good(挑战三的加成真不错，不过下一个..没关系,还有挑战四呢)达成要求:s>=1.41e174",
+        }, 
+28: {
+            name: "a17",
+            done() { return player.points.gte("1.79e308") }, 
+            tooltip: "反物质维度坍缩(你的数字维度坍缩了，新的转生！解锁新的自动化)达成要求:s>=1.79e308",
+        },                     
     },
     tabFormat: [
         "blank",
