@@ -212,7 +212,7 @@ return g.max(player.a1.challenges[12])
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',24) }
+            unlocked() { return  hasAchievement('cj',25) }
         },
 21: {
             name() { return '挑战3'},
@@ -236,7 +236,7 @@ return g.max(player.a1.challenges[21])
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',25) }
+            unlocked() { return  hasAchievement('cj',26) }
         },
 22: {
             name() { return '挑战4'},
@@ -260,7 +260,7 @@ return g.max(player.a1.challenges[22])
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',26) }
+            unlocked() { return  hasAchievement('cj',27) }
         },
     },
     tabFormat: [
