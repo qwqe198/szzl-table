@@ -122,7 +122,7 @@ x=x.div(layers.a1.c1eff().add(1).root(2))
 if(g.gte(2))g=g.div(2).add(1)
                 return g
             },
-            unlocked() { return hasAchievement('cj',19) },
+            unlocked() { return hasAchievement('cj',21) },
         },
 12: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
@@ -145,7 +145,7 @@ if(g.gte(2))g=g.div(2).add(1)
                 return g
             },
  purchaseLimit() { return n(20) },
-            unlocked() { return hasAchievement('cj',19) },
+            unlocked() { return hasAchievement('cj',21) },
         },
     },
     hotkeys: [
