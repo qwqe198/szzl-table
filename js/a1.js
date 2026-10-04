@@ -105,7 +105,7 @@ buyables: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
 x=x.div(layers.a1.c1eff().add(1).root(2))
                 var c = n(12).mul(n(1.2).pow(x.pow(1.2)))
-
+if(hasAchievement('cj',28))c=n(1.2).pow(x.pow(1.2))
                 return c
             },
             display() { return `获得β(当前:${format(getBuyableAmount(this.layer, this.id), 2)})费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α<br />α对资源的加成^${format(buyableEffect(this.layer, this.id), 2)}` },
@@ -127,7 +127,7 @@ if(g.gte(2))g=g.div(2).add(1)
 12: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
                 var c = n(1000).mul(n(5).pow(x.pow(1.3)))
-
+if(hasAchievement('cj',28))c=n(5).pow(x.pow(1.3))
                 return c
             },
             display() { return `每秒获取${format(getBuyableAmount(this.layer, this.id), 2)}倍的a,b，费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α` },
@@ -277,5 +277,5 @@ return g.max(player.a1.challenges[22])
 
     ],
     layerShown(){return hasAchievement('cj',18)},
-
+autoUpgrade() { return hasAchievement("cj", 28) },
 })

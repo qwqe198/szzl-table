@@ -96,7 +96,12 @@ position: 1,
 28: {
             name: "a17",
             done() { return player.points.gte("1.79e308") }, 
-            tooltip: "反物质维度坍缩(你的数字维度坍缩了，新的转生！解锁新的自动化)达成要求:s>=1.79e308",
+            tooltip: "反物质维度坍缩(你的数字维度坍缩了，新的转生！自动购买α升级,α购买价格基础为1)达成要求:s>=1.79e308",
+        }, 
+29: {
+            name: "a18",
+            done() { return player.i.points.gte(2) }, 
+            tooltip: "√-1(该游戏中的表示的是infinite point，而非imaginary number，解锁新的坍缩加成)达成要求:i>=2",
         },                     
     },
     tabFormat: [

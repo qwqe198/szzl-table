@@ -53,7 +53,7 @@ function changelog(){
 			<h3>v3.0 - 史无前例的改动</h3><br>
 - 本游戏借鉴于iwanna上的数字增量，原作者是暗，qq群号622963897<br>
 - 注：本改版有部分内容和原游戏不一样<br>
-				- 当前残局：完成a17<br>
+				- 当前残局：完成a18<br>
 	- 	一些公式<br>
 - 	在挑战1到4中，每38.53个数量级的s为1分数<br>
 			<br><br>`
@@ -63,7 +63,7 @@ function changelog(){
 } 
 
 function winText(){
-	return i18n(`你暂时完成了游戏!`, `Congratulations! You have reached the end and beaten this game, but for now...`, false)
+	return i18n(`你暂时完成了游戏!`, `你暂时完成了游戏!`, false)
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -90,6 +90,7 @@ if(hasUpgrade("p",11))g=g.mul(upgradeEffect("p",11))
 if(hasUpgrade("w",12))g=g.mul(upgradeEffect("w",12))
 if(hasUpgrade("a1",11))g=g.mul(upgradeEffect("a1",11))
 if(hasAchievement("cj",23))g=g.mul(10)
+if(hasAchievement("cj",28))g=g.mul(layers.i.i1eff())
 if(inChallenge("a1",21))g=g.pow(0.5)
 if(inChallenge("a1",22))g=g.add(10).log10().div(n(1.075).log10()).pow(2)
 	return g
