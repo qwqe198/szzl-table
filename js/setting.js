@@ -14,25 +14,7 @@ function layerDisplayTotal(id){
     }
 }
 
-addLayer("SideTab", {
-    name: "其他页面",
-    position: -999,
-    row: 0,
-    symbol() {return i18n('其他页面', '其他页面', false)},
-    nodeStyle: {"font-size": "15px", "text-center": "center", "height": "30px"},
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),
-    }},
-    small: true,
-    color: "#fefefe",
-    type: "none",
-    tooltip(){return false},
-    layerShown(){return layerDisplayTotal(['Setting','Statistics','Information','Changelog'])},
-    tabFormat: [
-        ["display-text", function() { return getPointsDisplay() }],
-    ],
-})
+
 
 addLayer("Setting", {
     name: "设置",

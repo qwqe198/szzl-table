@@ -9,7 +9,7 @@ addLayer("i", {
 		points: new Decimal(0),
     }},
     color: "#fff200",
-   requires() { return   new Decimal("1.79e308") },
+   requires() { return   new Decimal(layers.i.getNextAt()) },
     resource: "i", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on

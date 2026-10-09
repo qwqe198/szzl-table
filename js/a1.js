@@ -270,7 +270,7 @@ return g.max(player.a1.challenges[22])
        "prestige-button",
        "blank",
 ["display-text", () =>
-                   hasAchievement("cj", 23) ?`挑战1到4内p,w,α对s的加成失效`:``,
+                   hasAchievement("cj", 23) ?`挑战1到4内p,w,α对s的加成失效,每38.53个数量级的s为1分数`:``,
                     { "font-size": "20px" }
                 ],
        ["microtabs","tab"]
