@@ -205,15 +205,15 @@ player.a1.challenges[22]= n(0)
         "prestige-button",
       
         ["display-text", () =>
-            player.i.points.gte(1) ? `i:sx${format(layers.i.i1eff())}` : ``,
+            hasAchievement('cj', 28) ? `i:sx${format(layers.i.i1eff())}` : ``,
             { "font-size": "20px" }
         ],
         ["display-text", () =>
-            player.i.points.gte(2) ? `i2:px${format(layers.i.i2eff())}` : ``,
+            hasAchievement('cj', 29) ? `i2:px${format(layers.i.i2eff())}` : ``,
             { "font-size": "20px" }
         ],
         ["display-text", () =>
-            player.i.points.gte(4) ? `i3:wx${format(layers.i.i3eff())}` : ``,
+            hasAchievement('cj', 31) ? `i3:wx${format(layers.i.i3eff())}` : ``,
             { "font-size": "20px" }
         ],
 ["display-text", () =>
