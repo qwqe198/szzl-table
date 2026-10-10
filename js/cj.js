@@ -106,7 +106,7 @@ position: 1,
 31: {
             name: "a19",
             done() { return player.i.points.gte(4) }, 
-            tooltip: "collapse(你应该明显感受到坍缩越来越快了，尽管坍缩要求在提升，解锁新的坍缩加成，强化i加成,初始满级a&b点击器）达成要求:i>=4",
+            tooltip: "collapse(你应该明显感受到坍缩越来越快了，尽管坍缩要求在提升，解锁新的坍缩加成，强化i1加成,初始满级a&b点击器）达成要求:i>=4",
         }, 
 32: {
             name: "a20",
