@@ -101,8 +101,23 @@ position: 1,
 29: {
             name: "a18",
             done() { return player.i.points.gte(2) }, 
-            tooltip: "√-1(该游戏中的表示的是infinite point，而非imaginary number，解锁新的坍缩加成)达成要求:i>=2",
-        },                     
+            tooltip: "√-1(该游戏中的表示的是infinite point，而非imaginary number，解锁新的坍缩加成,自动p,w购买项)达成要求:i>=2",
+        }, 
+31: {
+            name: "a19",
+            done() { return player.i.points.gte(4) }, 
+            tooltip: "collapse(你应该明显感受到坍缩越来越快了，尽管坍缩要求在提升，解锁新的坍缩加成，强化i加成,初始满级a&b点击器）达成要求:i>=4",
+        }, 
+32: {
+            name: "a20",
+            done() { return player.i.points.gte(7) }, 
+            tooltip: "还有多远？(坍缩要求加的越来越快!坍缩速度也是!强化i2加成，坍缩保留Ψ1，Ψ2，Ψ3，Ψ4，Wow)达成要求:i>=7",
+        },
+33: {
+            name: "a21",
+            done() { return player.i.points.gte(12) }, 
+            tooltip: "Tier 2(看看坍缩要求?它更改了公式。你可以最大获得β，在i解锁新东西)达成要求:i>=12",
+        },                                                                              
     },
     tabFormat: [
         "blank",

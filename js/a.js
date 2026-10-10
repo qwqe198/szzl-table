@@ -53,9 +53,9 @@ if(inChallenge("a1",11))g=g.pow(0.3)
  buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
-                var c = n(1000000).mul(n(10).pow(x.pow(1.4)))
-if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.4))
-                return c
+                var g = n(1000000).mul(n(10).pow(x.pow(1.4)))
+if(hasAchievement('cj',17))g=n(10).pow(x.pow(1.4))
+                return g
             },
             display() { return `p获取<br />x${format(buyableEffect(this.layer, this.id), 2)}.(下一级: ${format(this.effect(getBuyableAmount(this.layer, this.id).add(1)))})<br />费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}a<br>等级:${formatWhole(getBuyableAmount(this.layer, this.id))}` },
             canAfford() { return player.a.points.gte(this.cost()) },
@@ -101,7 +101,7 @@ if(hasAchievement('cj',17))c=n(10).pow(x.pow(1.4))
 autoUpgrade() { return hasAchievement("cj", 15) },
   update(diff) {
 if (hasAchievement("cj", 19)) setBuyableAmount(this.layer, 11, player.a.points.add(1).log10().root(1.4).floor().add(1))
-
+if (hasAchievement("cj", 31)) setBuyableAmount("a1", 12, n(20))
     },
  passiveGeneration() {
         return format(buyableEffect("a1", 12), 0)

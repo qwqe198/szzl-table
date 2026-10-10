@@ -23,6 +23,7 @@ g = g.mul(buyableEffect('a', 11))
 g = g.mul(buyableEffect('b', 11))
 if(hasUpgrade("w",11))g=g.mul(upgradeEffect("w",11))
 if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
+if(hasAchievement("cj",29))g=g.mul(layers.i.i2eff())
 if(inChallenge("a1",21))g=n(0)
         return g
     },
@@ -114,4 +115,8 @@ if(hasAchievement('cj',25))c=n(1.5).pow(x.pow(1.5))
     ],
 autoUpgrade() { return hasAchievement("cj", 18) },
     layerShown(){return player.points.gte(1e7)||hasAchievement('cj',13)},
+update(diff) {
+if (hasAchievement("cj", 29)) setBuyableAmount(this.layer, 11, player.p.points.add(1).log10().div(n(1.5).log10()).root(1.5).floor().add(1))
+
+    },
 })

@@ -53,7 +53,7 @@ function changelog(){
 			<h3>v3.0 - 史无前例的改动</h3><br>
 - 本游戏借鉴于iwanna上的数字增量，原作者是暗，qq群号622963897<br>
 - 注：本改版有部分内容和原游戏不一样<br>
-				- 当前残局：完成a18<br>
+				- 当前残局：完成a21<br>
 
 			<br><br>`
 		
@@ -109,7 +109,7 @@ var displayThings = [
 
 // You can write code here to easily display information in the top-left corner
 function displayThingsRes(){
-	return 's: '+format(player.points)+' | '+'a: '+format(player.a.points)+' | '+'b: '+format(player.b.points)+' | '+'P: '+format(player.p.points)+' | '+'w: '+format(player.w.points)+' | '+'α: '+format(player.a1.points)
+	return 'a: '+format(player.a.points)+' | '+'b: '+format(player.b.points)+' | '+'P: '+format(player.p.points)+' | '+'w: '+format(player.w.points)+' | '+'α: '+format(player.a1.points)+' | '+'i: '+format(player.i.points)
 }
 
 // Determines when the game "ends"
@@ -120,7 +120,7 @@ function isEndgame() {
 function getPointsDisplay(){
 	let a = ''
 	if(player.devSpeed && player.devSpeed!=1){
-		a += options.ch ? '<br>时间加速: '+format(player.devSpeed)+'x' : '<br>Dev Speed: '+format(player.devSpeed)+'x'
+		a += options.ch ? '<br>时间加速: '+format(player.devSpeed)+'x' : '<br>时间加速: '+format(player.devSpeed)+'x'
 	}
 	if(player.offTime!==undefined){
 		a += options.ch ? '<br>离线加速剩余时间: '+formatTime(player.offTime.remain) : '<br>离线加速剩余时间: '+formatTime(player.offTime.remain)
@@ -147,7 +147,7 @@ var backgroundStyle = {
 
 // You can change this if you have things that can be messed up by long tick lengths
 function maxTickLength() {
-	return(3600) // Default is 1 hour which is just arbitrarily large
+	return(999999999999999) // Default is 1 hour which is just arbitrarily large
 }
 
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,

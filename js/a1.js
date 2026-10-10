@@ -104,9 +104,9 @@ buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
 x=x.div(layers.a1.c1eff().add(1).root(2))
-                var c = n(12).mul(n(1.2).pow(x.pow(1.2)))
-if(hasAchievement('cj',28))c=n(1.2).pow(x.pow(1.2))
-                return c
+                var g = n(12).mul(n(1.2).pow(x.pow(1.2)))
+if(hasAchievement('cj',28))g=n(1.2).pow(x.pow(1.2))
+                return g
             },
             display() { return `获得β(当前:${format(getBuyableAmount(this.layer, this.id), 2)})费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α<br />α对资源的加成^${format(buyableEffect(this.layer, this.id), 2)}` },
             canAfford() { return player.a1.points.gte(this.cost()) },
@@ -120,15 +120,16 @@ if(hasAchievement('cj',28))c=n(1.2).pow(x.pow(1.2))
             effect(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.mul(0.05).add(1)
 if(g.gte(2))g=g.div(2).add(1)
+if(g.gte(10))g=g.div(5).add(8)
                 return g
             },
             unlocked() { return hasAchievement('cj',21) },
         },
 12: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
-                var c = n(1000).mul(n(5).pow(x.pow(1.3)))
-if(hasAchievement('cj',28))c=n(5).pow(x.pow(1.3))
-                return c
+                var g = n(1000).mul(n(5).pow(x.pow(1.3)))
+if(hasAchievement('cj',28))g=n(5).pow(x.pow(1.3))
+                return g
             },
             display() { return `每秒获取${format(getBuyableAmount(this.layer, this.id), 2)}倍的a,b，费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α` },
             canAfford() { return player.a1.points.gte(this.cost()) },
@@ -278,4 +279,17 @@ return g.max(player.a1.challenges[22])
     ],
     layerShown(){return hasAchievement('cj',18)},
 autoUpgrade() { return hasAchievement("cj", 28) },
+ doReset(resettingLayer) {
+        if (layers[resettingLayer].row > layers[this.layer].row)  {
+            let kept = ["unlocked", "auto"]
+
+             if (hasAchievement("cj", 32)) {
+                kept.push("challenges")
+            }
+
+
+            
+            layerDataReset(this.layer, kept)
+        }
+    },
 })

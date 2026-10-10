@@ -34,17 +34,22 @@ getResetGain() {
         return g.floor()
     },
 getNextAt() {
-        let g = n("1.79e308").pow(n(1.1).pow(player.i.points))
-
-        return g
-    },
+let g = n("1.79e308").mul(n(2).mul(player.i.points).add(11).pow(n(player.i.points).pow(2).add(n(12).mul(player.i.points)).add(11)));
+if(player.i.points.gte(10))g=n("1.79e308").mul(n(player.i.points).add(1).pow(n(player.i.points).add(1).pow(2).mul(n(player.i.points).sub(7))));
+    return g
+},
 i1eff() {
         let g = n(10).pow(n(player.i.points).pow(1.5))
-
+if(hasAchievement('cj',31))g=n(16).pow(n(player.i.points).pow(1.6))
         return g
     },
 i2eff() {
-        let g = n(100).pow(n(player.i.points).pow(1.7))
+        let g = n(4).pow(n(player.i.points).pow(1.4))
+if(hasAchievement('cj',32))g=n(5).pow(n(player.i.points).pow(1.5))
+        return g
+    },
+i3eff() {
+        let g = n(3).pow(n(player.i.points).pow(1.3))
 
         return g
     },
@@ -69,7 +74,15 @@ i2eff() {
        "prestige-button",
        "blank",
 ["display-text", () =>
-                   player.i.points.gte(1) ?`s获取x${format(layers.i.i1eff())}`:``,
+                   player.i.points.gte(1) ?`i:sx${format(layers.i.i1eff())}`:``,
+                    { "font-size": "20px" }
+                ],
+["display-text", () =>
+                   player.i.points.gte(2) ?`i2:px${format(layers.i.i2eff())}`:``,
+                    { "font-size": "20px" }
+                ],
+["display-text", () =>
+                   player.i.points.gte(4) ?`i3:wx${format(layers.i.i3eff())}`:``,
                     { "font-size": "20px" }
                 ],
        ["microtabs","tab"]

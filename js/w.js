@@ -20,6 +20,7 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
 if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
+if(hasAchievement("cj",31))g=g.mul(layers.i.i3eff())
         return g
     },
      gainExp() { // Calculate the exponent on main currency from bonuses
@@ -119,5 +120,9 @@ if(g.gte(2.5)&&!hasAchievement('cj',26))g=g.div(2.5).add(1.5)
        ["microtabs","tab"]
     ],
 autoUpgrade() { return hasAchievement("cj", 18) },
+update(diff) {
+if (hasAchievement("cj", 29)) setBuyableAmount(this.layer, 11, player.w.points.add(1).log10().div(n(1.4).log10()).root(1.4).floor().add(1))
+
+    },
     layerShown(){return  player.p.points.gte(100)||hasAchievement('cj',15)},
 })
