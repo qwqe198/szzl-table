@@ -19,7 +19,7 @@ addLayer("a1", {
     exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
-
+g=g.mul((tmp["i"].buyables[13].eff1))
         return g
     },
 c1eff() { // Calculate the multiplier for main currency from bonuses
@@ -45,6 +45,7 @@ c4eff() { // Calculate the multiplier for main currency from bonuses
      gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
 if(hasAchievement('cj',24))g = g.add(layers.a1.c2eff().add(1).root(2).sub(1))
+g = g.mul(tmp["i"].buyables[13].eff2)
         return g
     },
     upgrades: {
@@ -93,7 +94,8 @@ g = g.pow(buyableEffect('a1', 11))
             description: `α加成w获取.`,
             effect() {
                 var g = player.a1.points.add(1).log10().add(2)
-g = g.pow(buyableEffect('a1', 11))
+g = g.pow(buyableEffect('a1', 11).mul((tmp["i"].buyables[12].eff2)))
+
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -103,7 +105,8 @@ g = g.pow(buyableEffect('a1', 11))
 buyables: {
         11: {
             cost(x = getBuyableAmount(this.layer, this.id)) {
-x=x.div(layers.a1.c1eff().add(1).root(2))
+ var d=layers.a1.c1eff().add(1).root(2).mul((tmp["i"].buyables[13].eff3))
+x=x.div(d)
                 var g = n(12).mul(n(1.2).pow(x.pow(1.2)))
 if(hasAchievement('cj',28))g=n(1.2).pow(x.pow(1.2))
                 return g
@@ -111,7 +114,7 @@ if(hasAchievement('cj',28))g=n(1.2).pow(x.pow(1.2))
             display() { return `获得β(当前:${format(getBuyableAmount(this.layer, this.id), 2)})费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α<br />α对资源的加成^${format(buyableEffect(this.layer, this.id), 2)}` },
             canAfford() { return player.a1.points.gte(this.cost()) },
             buy() {
-               var g=layers.a1.c1eff().add(1).root(2)
+               var g=layers.a1.c1eff().add(1).root(2).mul((tmp["i"].buyables[13].eff3))
               if (!hasAchievement("cj", 33))  setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
 if (hasAchievement("cj", 33))setBuyableAmount(this.layer, this.id, player.a1.points.add(1).log10().div(n(1.2).log10()).root(1.2).mul(g).floor().add(1))
             },
@@ -120,7 +123,7 @@ if (hasAchievement("cj", 33))setBuyableAmount(this.layer, this.id, player.a1.poi
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.mul(0.05).add(1)
-if(g.gte(2))g=g.div(2).add(1)
+if(g.gte(2)&&!getBuyableAmount("i", 13).gte(1))g=g.div(2).add(1)
 if(g.gte(10))g=g.div(5).add(8)
                 return g
             },
@@ -151,7 +154,7 @@ if(hasAchievement('cj',28))g=n(5).pow(x.pow(1.3))
         },
     },
     hotkeys: [
-        {key: "A", description: "Shift+a: 进行α重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "A", description: "Shift+a: 进行α重置", onPress(){if (canReset(this.layer))doReset(this.layer)}},
     ],
     microtabs:{
         tab:{
@@ -270,12 +273,14 @@ return g.max(player.a1.challenges[22])
 
        "main-display",
        "prestige-button",
-       "blank",
+   
 ["display-text", () =>
                    hasAchievement("cj", 23) ?`挑战1到4内p,w,α对s的加成失效,每38.53个数量级的s为1分数`:``,
                     { "font-size": "20px" }
                 ],
-       ["microtabs","tab"]
+ "buyables",
+"challenges",
+                "upgrades",
 
     ],
     layerShown(){return hasAchievement('cj',18)},

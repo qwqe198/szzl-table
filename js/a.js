@@ -94,8 +94,9 @@ if(hasAchievement('cj',17))g=n(10).pow(x.pow(1.4))
        ["display-text", function() { return getPointsDisplay() }],
        "main-display",
        "prestige-button",
-       "blank",
-       ["microtabs","tab"]
+ "buyables",
+                "upgrades",
+       
     ],
     layerShown(){return true},
 autoUpgrade() { return hasAchievement("cj", 15) },

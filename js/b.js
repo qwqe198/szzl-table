@@ -16,17 +16,18 @@ addLayer("b", {
     baseResourceI18N: "点数", // Second name of the baseResource for internationalization (i18n) if internationalizationMod is enabled
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.25, // Prestige currency exponent
+    exponent() { return getBuyableAmount("i", 11).gte(1) ? new Decimal(1) : new Decimal(0.25) },
     gainMult() { // Calculate the multiplier for main currency from bonuses
        g = new Decimal(1)
 if(hasUpgrade("p",13))g=g.mul(upgradeEffect("p",13))
 if(hasUpgrade("w",14))g=g.mul(upgradeEffect("w",14))
 if(hasUpgrade("a1",13))g=g.mul(upgradeEffect("a1",13))
+g=g.mul((tmp["i"].buyables[11].eff2))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
-if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff()))
+if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().mul(tmp["i"].buyables[11].eff1)))
 
         return g
     },
@@ -97,8 +98,9 @@ if(inChallenge("a1",12))g=g.pow(0.2)
        ["display-text", function() { return getPointsDisplay() }],
        "main-display",
        "prestige-button",
-       "blank",
-       ["microtabs","tab"]
+   "buyables",
+                "upgrades",
+    
     ],
     layerShown(){return hasUpgrade("a",12)||hasAchievement('cj',13)},
 autoUpgrade() { return hasAchievement("cj", 15) },

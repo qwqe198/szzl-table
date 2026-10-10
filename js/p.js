@@ -110,13 +110,17 @@ if(hasAchievement('cj',25))c=n(1.5).pow(x.pow(1.5))
        ["display-text", function() { return getPointsDisplay() }],
        "main-display",
        "prestige-button",
-       "blank",
-       ["microtabs","tab"]
+
+"buyables",
+                "upgrades",
     ],
 autoUpgrade() { return hasAchievement("cj", 18) },
     layerShown(){return player.points.gte(1e7)||hasAchievement('cj',13)},
 update(diff) {
 if (hasAchievement("cj", 29)) setBuyableAmount(this.layer, 11, player.p.points.add(1).log10().div(n(1.5).log10()).root(1.5).floor().add(1))
 
+    },
+ passiveGeneration() {
+        return getBuyableAmount("i", 12).gte(1) ? new Decimal(1) : new Decimal(0)
     },
 })
