@@ -111,8 +111,9 @@ if(hasAchievement('cj',28))g=n(1.2).pow(x.pow(1.2))
             display() { return `获得β(当前:${format(getBuyableAmount(this.layer, this.id), 2)})费用:${format(this.cost(getBuyableAmount(this.layer, this.id)))}α<br />α对资源的加成^${format(buyableEffect(this.layer, this.id), 2)}` },
             canAfford() { return player.a1.points.gte(this.cost()) },
             buy() {
-               
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+               var g=layers.a1.c1eff().add(1).root(2)
+              if (!hasAchievement("cj", 33))  setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+if (hasAchievement("cj", 33))setBuyableAmount(this.layer, this.id, player.a1.points.add(1).log10().div(n(1.2).log10()).root(1.2).mul(g).floor().add(1))
             },
             title() {
                 return ""
