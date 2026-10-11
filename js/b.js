@@ -22,7 +22,7 @@ addLayer("b", {
 if(hasUpgrade("p",13))g=g.mul(upgradeEffect("p",13))
 if(hasUpgrade("w",14))g=g.mul(upgradeEffect("w",14))
 if(hasUpgrade("a1",13))g=g.mul(upgradeEffect("a1",13))
-g=g.mul((tmp["i"].buyables[11].eff2))
+if(getBuyableAmount("i", 11).gte(1))g=g.mul((tmp["i"].buyables[11].eff2))
         return g
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
