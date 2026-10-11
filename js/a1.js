@@ -9,7 +9,7 @@ addLayer("a1", {
 		points: new Decimal(0),
     }},
     color: "#2013dc",
-   requires() { return   new Decimal(6.02e23) },
+ requires() { return  hasAchievement('cj',33) ? new Decimal(1) : new Decimal(6.02e23) },
     resource: "α", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "s", // Name of resource prestige is based on
@@ -125,6 +125,7 @@ if (hasAchievement("cj", 33))setBuyableAmount(this.layer, this.id, player.a1.poi
                 var g = x.mul(0.05).add(1)
 if(g.gte(2)&&!getBuyableAmount("i", 13).gte(1))g=g.div(2).add(1)
 if(g.gte(10))g=g.div(5).add(8)
+g=powsoftcap(g,"100",2)
                 return g
             },
             unlocked() { return hasAchievement('cj',21) },
@@ -297,5 +298,8 @@ autoUpgrade() { return hasAchievement("cj", 28) },
             
             layerDataReset(this.layer, kept)
         }
+    },
+passiveGeneration() {
+        return hasAchievement("cj",34) ? new Decimal(1) : new Decimal(0)
     },
 })

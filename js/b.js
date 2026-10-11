@@ -28,7 +28,7 @@ g=g.mul((tmp["i"].buyables[11].eff2))
     gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
 if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().mul(tmp["i"].buyables[11].eff1)))
-
+if(hasAchievement("cj",34))g=g.mul(player.i.points.add(1).pow(0.2))
         return g
     },
 buyables: {

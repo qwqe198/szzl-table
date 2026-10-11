@@ -17,11 +17,12 @@ function logsoftcap(num,start,power){
 }
 //指数软上限
 function powsoftcap(num,start,power){
-	if(num.gt(start)){
-		num = num.root(power).mul(start.pow(one.sub(one.div(power))))
+	if(num.gte(start)){
+		num = num.root(power).mul(n(start).pow(n(1).sub(n(1).div(power))))
 	}
     return num
 }
+
 //倍增型购买项批量购买(极其精准)
 function bulkBuy(item,cost,level,costmult){
     var bulk = OmegaNum.affordGeometricSeries(item,cost,costmult,level);
@@ -38,7 +39,7 @@ function expRoot(num,root){
 }
 //e后数字乘方
 function expPow(num,pow){
-    return ten.pow(num.log10().pow(pow))
+    return n(10).pow(num.log10().pow(pow))
 }
 //获得F后点数
 function fpg(num){

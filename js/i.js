@@ -40,6 +40,7 @@ addLayer("i", {
 let i = player.i.points
   if (i.gte(1))g = n("1.79e308").mul(n(2).mul(i).add(11).pow(n(i).pow(2).add(n(12).mul(i)).add(11)));
         if (i.gte(10)) g = n("1.79e308").mul(n(i).add(1).pow(n(i).add(1).pow(2).mul(n(i).sub(7))));
+if (i.gte(20)) g = n("1.79e308").mul(n(4).mul(i).add(4).pow(n(i).pow(4).sub(153000)));
         return g
     },
     i1eff() {
@@ -87,18 +88,19 @@ player.a1.challenges[22]= n(0)
                 return "获得u"
             },
             eff1(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.add(1).log10().add(1).log10().add(1)
+                var g = x.add(1).log10().add(1).log10().add(1).pow(3)
 
                 return g
             },
             eff2(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).mul(5)).add(1)
+                var g = expPow(x.mul(100).pow(10), 1.6)
 
                 return g
             },
             eff3(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.add(1).log10()
-
+g=powsoftcap(g,"10",2)
+if(player.i.points.lt(1))g=n(0)
                 return g
             },
             unlocked() { return hasAchievement('cj', 33) },
@@ -128,7 +130,7 @@ player.a1.challenges[22]= n(0)
                 return "获得o"
             },
             eff1(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1)).add(1)
+                var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).pow(3.5)).add(1)
 
                 return g
             },
@@ -138,8 +140,9 @@ player.a1.challenges[22]= n(0)
                 return g
             },
             eff3(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.add(1).log10().pow(1.2)
-
+                var g = x.add(1).log10().mul(1.2)
+g=powsoftcap(g,"10",2)
+if(player.i.points.lt(1))g=n(0)
                 return g
             },
             unlocked() { return hasAchievement('cj', 33) },
@@ -170,7 +173,7 @@ player.a1.challenges[22]= n(0)
                 return "获得q"
             },
             eff1(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).pow(0.8)).add(1)
+                var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).pow(2.5)).add(1)
 
                 return g
             },
@@ -180,7 +183,7 @@ player.a1.challenges[22]= n(0)
                 return g
             },
             eff3(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.add(1).log10().add(1).log10().add(1).pow(0.65)
+                var g = x.add(1).log10().add(1).log10().add(1).pow(0.55)
 
                 return g
             },
@@ -205,7 +208,7 @@ player.a1.challenges[22]= n(0)
         "prestige-button",
       
         ["display-text", () =>
-            hasAchievement('cj', 28) ? `i:sx${format(layers.i.i1eff())}` : ``,
+            hasAchievement('cj', 28) ? `i1:sx${format(layers.i.i1eff())}` : ``,
             { "font-size": "20px" }
         ],
         ["display-text", () =>
@@ -217,7 +220,7 @@ player.a1.challenges[22]= n(0)
             { "font-size": "20px" }
         ],
 ["display-text", () =>
-                   hasAchievement("cj", 33) ?`大撕裂将重置前面所有东西.下方有三种撕裂模式，每种模式会在不同的方面给予加成<br>撕裂资源获取受i和自身互相加成`:``,
+                   hasAchievement("cj", 33) ?`大撕裂将重置前面所有东西.下方有三种撕裂模式，每种模式会在不同的方面给予加成<br>撕裂资源获取受i和自身互相加成<br>u3和o3需要持有i以生效`:``,
                     { "font-size": "20px" }
                 ],
 

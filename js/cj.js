@@ -116,8 +116,28 @@ position: 1,
 33: {
             name: "a21",
             done() { return player.i.points.gte(12) }, 
-            tooltip: "Tier 2(看看坍缩要求?它更改了公式。你可以最大获得β，在i解锁新东西)达成要求:i>=12",
-        },                                                                              
+            tooltip: "Tier 2(看看坍缩要求?它更改了公式。你可以最大获得β，在i解锁新东西,α重置要求为1)达成要求:i>=12",
+        },
+34: {
+            name: "a22",
+            done() { return player.i.points.gte(16) }, 
+            tooltip: "i++(这游戏的平衡性是不是太好了?一天不到就有人21了?每秒获得100%的α，i极大加成b获取)达成要求:i>=16",
+        },
+35: {
+            name: "a23",
+            done() { return player.i.points.gte(18) }, 
+            tooltip: "for(int完成成就=22,int i>=18&&完成成就==22,完成成就++)(上面的代码真烂!)达成要求:i>=18",
+        },
+36: {
+            name: "a24",
+            done() { return player.points.gte("1.19e4932") }, 
+            tooltip: "long double极限(计算机最大的数(单个变量，非字符串)）达成要求:s>=1.19e4932",
+        },
+37: {
+            name: "a25",
+            done() { return player.i.points.gte(20) }, 
+            tooltip: "神马？(恐怖的声音传入你耳边：“看看坍缩要求“)达成要求:i>=20",
+        },                                                                               
     },
     tabFormat: [
         "blank",
