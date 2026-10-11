@@ -143,11 +143,21 @@ position: 1,
             done() { return player.points.gte("6e15051") }, 
             tooltip: "计算器极限(作者手机自带的计算器的极限，但这并非我们的极限,i2,u2效果变得更好)达成要求:s>=6e15051",
         },
-39: {
+        39: {
             name: "a27",
             done() { return getBuyableAmount("a1", 11).gte(67000) }, 
-            tooltip: "撕裂挑战(新的里程碑！新的挑战！解锁挑战五)达成要求:β>=67000",
-        },                                                                                 
+            tooltip: "撕裂挑战(新的里程碑！新的挑战！解锁挑战五,o1,q1效果变得更好)达成要求:β>=67000",
+        }, 
+41: {
+            name: "a28",
+            done() { return player.points.gte("2.66e36305") }, 
+            tooltip: "6^6^6(用计算器算的，算出6^6log(6)就可以了，数学真是神奇!解锁神奇的β自动购买）达成要求:s>=2.66e36305",
+        },
+42: {
+            name: "a29",
+            done() { return player.i.points.gte(22) }, 
+            tooltip: "β?β,β!(神奇的β购买不要α!这使你自动化进展如此快)达成要求:i>=22",
+        },                                                                        
     },
     tabFormat: [
         "blank",

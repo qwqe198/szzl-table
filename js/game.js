@@ -211,9 +211,7 @@ function doReset(layer, force=false) {
 	tmp[layer].baseAmount = decimalZero // quick fix
 
 
-	for (layerResetting in layers) {
-		if (row >= layers[layerResetting].row && (!force || layerResetting != layer)) completeChallenge(layerResetting)
-	}
+	
 
 	player.points = (row == 0 ? decimalZero : getStartPoints())
 

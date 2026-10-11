@@ -302,4 +302,8 @@ autoUpgrade() { return hasAchievement("cj", 28) },
 passiveGeneration() {
         return hasAchievement("cj",34) ? new Decimal(1) : new Decimal(0)
     },
+update(diff) {
+var g=layers.a1.c1eff().add(1).root(2).mul((tmp["i"].buyables[13].eff3))          
+if (hasAchievement("cj", 41))setBuyableAmount(this.layer, 11, player.a1.points.add(1).log10().div(n(1.2).log10()).root(1.2).mul(g).floor().add(1))
+    },
 })
