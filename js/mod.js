@@ -51,9 +51,9 @@ function changelog(){
 		<span style="font-size: 17px;">
 			<h3><s>你应该自己写这个</s></h3><br><br>
 			<h3>v3.0 - 史无前例的改动</h3><br>
-- 本游戏借鉴于iwanna上的数字增量，原作者是暗，qq群号622963897<br>
+- 本游戏为数字增量的mod（原版在iwanna上），原作者是暗，qq群号622963897<br>
 - 注：本改版有部分内容和原游戏不一样<br>
-				- 当前残局：a25<br>
+				- 当前残局：a27<br>
 
 			<br><br>`
 		

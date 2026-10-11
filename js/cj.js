@@ -136,8 +136,18 @@ position: 1,
 37: {
             name: "a25",
             done() { return player.i.points.gte(20) }, 
-            tooltip: "神马？(恐怖的声音传入你耳边：“看看坍缩要求“)达成要求:i>=20",
-        },                                                                               
+            tooltip: "神马？(恐怖的声音传入你耳边：“看看坍缩要求“，使p购买的效果更好)达成要求:i>=20",
+        },
+38: {
+            name: "a26",
+            done() { return player.points.gte("6e15051") }, 
+            tooltip: "计算器极限(作者手机自带的计算器的极限，但这并非我们的极限,i2,u2效果变得更好)达成要求:s>=6e15051",
+        },
+39: {
+            name: "a27",
+            done() { return getBuyableAmount("a1", 11).gte(67000) }, 
+            tooltip: "撕裂挑战(新的里程碑！新的挑战！解锁挑战五)达成要求:β>=67000",
+        },                                                                                 
     },
     tabFormat: [
         "blank",

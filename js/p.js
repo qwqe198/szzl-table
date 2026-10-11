@@ -83,7 +83,7 @@ if(hasAchievement('cj',25))c=n(1.5).pow(x.pow(1.5))
                 return ""
             },
             effect(x = getBuyableAmount(this.layer, this.id)) {
-                var g = x.mul(0.07).add(1)
+                var g = x.mul(hasAchievement('cj',37)?0.2:0.07).add(1)
 
                 return g
             },

@@ -51,6 +51,7 @@ if (i.gte(20)) g = n("1.79e308").mul(n(4).mul(i).add(4).pow(n(i).pow(4).sub(1530
     i2eff() {
         let g = n(4).pow(n(player.i.points).pow(1.4))
         if (hasAchievement('cj', 32)) g = n(5).pow(n(player.i.points).pow(1.5))
+if (hasAchievement('cj', 38)) g = n(10).pow(n(player.i.points).pow(2))
         return g
     },
     i3eff() {
@@ -93,7 +94,7 @@ player.a1.challenges[22]= n(0)
                 return g
             },
             eff2(x = getBuyableAmount(this.layer, this.id)) {
-                var g = expPow(x.mul(100).pow(10), 1.6)
+                var g = expPow(x.mul(100).pow(10), hasAchievement('cj',38)?1.8:1.6)
 
                 return g
             },
