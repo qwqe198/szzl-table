@@ -156,8 +156,23 @@ position: 1,
 42: {
             name: "a29",
             done() { return player.i.points.gte(22) }, 
-            tooltip: "β?β,β!(神奇的β购买不要α!这使你自动化进展如此快)达成要求:i>=22",
-        },                                                                        
+            tooltip: "β?β,β!(神奇的β购买不要α!这使你自动化进展如此快，修改挑战3,α获取基于w,增加a22对b奖励,i加成u2效果)达成要求:i>=22",
+        },
+43: {
+            name: "a30",
+            done() { return player.i.points.gte(23) }, 
+            tooltip: "挑战者(该增加难度了，解锁挑战6)达成要求:i>=23",
+        },
+44: {
+            name: "a31",
+            done() { return player.points.gte("7.66e206544") }, 
+            tooltip: "阿基米德群牛问题最小解(据说这个数字完整打印出来有42张A4纸)达成要求:s>=7.66e206544",
+        },
+45: {
+            name: "a32",
+            done() { return player.points.gte("e1.66e6") }, 
+            tooltip: "e^e^e^e(嘿嘿,又见面了e(O▼e)e,给你个礼物——解锁挑战7)达成要求:s>=e1.66e6",
+        },                                                                           
     },
     tabFormat: [
         "blank",

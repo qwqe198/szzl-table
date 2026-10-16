@@ -41,12 +41,14 @@ let i = player.i.points
   if (i.gte(1))g = n("1.79e308").mul(n(2).mul(i).add(11).pow(n(i).pow(2).add(n(12).mul(i)).add(11)));
         if (i.gte(10)) g = n("1.79e308").mul(n(i).add(1).pow(n(i).add(1).pow(2).mul(n(i).sub(7))));
 if (i.gte(20)) g = n("1.79e308").mul(n(4).mul(i).add(4).pow(n(i).pow(4).sub(153000)));
+if (i.gte(30)) g = n("1.79e308").mul(n(i).add(1).pow(n(i).add(1).pow(6).div(30).sub("2.333e7")));
 if(inChallenge("i",11))g=g.pow(g.add(1).log10().div(50).pow(2))
         return g
     },
     i1eff() {
         let g = n(10).pow(n(player.i.points).pow(1.5))
         if (hasAchievement('cj', 31)) g = n(16).pow(n(player.i.points.add(tmp["i"].buyables[11].eff3)).pow(1.6))
+
         return g
     },
     i2eff() {
@@ -60,6 +62,7 @@ if (hasAchievement('cj', 38)) g = n(10).pow(n(player.i.points).pow(2))
 
         return g
     },
+
     hotkeys: [
         { key: "i", description: "i: 进行大坍缩", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
@@ -76,7 +79,8 @@ u3加成:i在i1的公式中+${format(tmp["i"].buyables[11].eff3, 2)}.<br>数量:
             },
             canAfford() { return player.i.points.gte(this.cost()) },
             buy() {
-var i =player.i.points.sub(11)
+var i1 =player.i.points.sub(11)
+var i2 =player.i.points.mul(challengeEffect("i", 12).add(1)).sub(11)
 var a =getBuyableAmount(this.layer, 11).add(10).log10().mul(getBuyableAmount(this.layer, 12).add(10).log10()).mul(getBuyableAmount(this.layer, 13).add(10).log10()).pow(challengeEffect("i", 11).add(1))
 doReset(this.layer,true)
 player.i.points = n(0)
@@ -84,24 +88,28 @@ player.a1.challenges[11]= n(0)
 player.a1.challenges[12]= n(0)
 player.a1.challenges[21]= n(0)
 player.a1.challenges[22]= n(0)
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i.pow(i).mul(a)))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i1.pow(i2).mul(a)))
             },
             title() {
                 return "获得u"
             },
             eff1(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.add(1).log10().add(1).log10().add(1).pow(3)
-
+g=powsoftcap(g,"25",2)
                 return g
             },
             eff2(x = getBuyableAmount(this.layer, this.id)) {
                 var g = expPow(x.mul(100).pow(10), hasAchievement('cj',38)?1.8:1.6)
+if(hasAchievement("cj",42))g=g.pow(player.i.points.add(1).pow(0.35))
+ g=expRootSoftcap(g, "1e1000000", 2)
+if(inChallenge("i",12))g=expPow(g,0.9)
 
                 return g
             },
             eff3(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.add(1).log10()
 g=powsoftcap(g,"10",2)
+if(inChallenge("i",12))g=g.pow(0.5)
 if(player.i.points.lt(1))g=n(0)
                 return g
             },
@@ -119,14 +127,15 @@ o3加成:i在i3的公式中+${format(tmp["i"].buyables[12].eff3, 2)}.<br>数量:
             },
             canAfford() { return player.i.points.gte(this.cost()) },
             buy() {
-var i =player.i.points.sub(11)
+var i1 =player.i.points.sub(11)
+var i2 =player.i.points.mul(challengeEffect("i", 12).add(1)).sub(11)
 var a =getBuyableAmount(this.layer, 11).add(10).log10().mul(getBuyableAmount(this.layer, 12).add(10).log10()).mul(getBuyableAmount(this.layer, 13).add(10).log10()).pow(challengeEffect("i", 11).add(1))
 player.i.points = n(0)
 player.a1.challenges[11]= n(0)
 player.a1.challenges[12]= n(0)
 player.a1.challenges[21]= n(0)
 player.a1.challenges[22]= n(0)
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i.pow(i).mul(a)))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i1.pow(i2).mul(a)))
             },
             title() {
                 return "获得o"
@@ -134,6 +143,7 @@ player.a1.challenges[22]= n(0)
             eff1(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).pow(3.5)).add(1)
 if(hasAchievement("cj",39))g=g.pow(1.6)
+if(inChallenge("i",12))g=expPow(g,0.9)
                 return g
             },
             eff2(x = getBuyableAmount(this.layer, this.id)) {
@@ -161,7 +171,8 @@ q3加成:β获取量x${format(tmp["i"].buyables[13].eff3, 2)}.<br>数量:${forma
             },
             canAfford() { return player.i.points.gte(this.cost()) },
             buy() {
-var i =player.i.points.sub(11)
+var i1 =player.i.points.sub(11)
+var i2 =player.i.points.mul(challengeEffect("i", 12).add(1)).sub(11)
 var a =getBuyableAmount(this.layer, 11).add(10).log10().mul(getBuyableAmount(this.layer, 12).add(10).log10()).mul(getBuyableAmount(this.layer, 13).add(10).log10()).pow(challengeEffect("i", 11).add(1))
 
 player.i.points = n(0)
@@ -169,7 +180,7 @@ player.a1.challenges[11]= n(0)
 player.a1.challenges[12]= n(0)
 player.a1.challenges[21]= n(0)
 player.a1.challenges[22]= n(0)
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i.pow(i).mul(a)))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(i1.pow(i2).mul(a)))
             },
             title() {
                 return "获得q"
@@ -177,6 +188,7 @@ player.a1.challenges[22]= n(0)
             eff1(x = getBuyableAmount(this.layer, this.id)) {
                 var g = x.mul(10).pow(x.add(1).log10().add(1).log10().add(1).pow(2.5)).add(1)
 if(hasAchievement("cj",39))g=g.pow(1.6)
+if(inChallenge("i",12))g=expPow(g,0.9)
                 return g
             },
             eff2(x = getBuyableAmount(this.layer, this.id)) {
@@ -226,7 +238,40 @@ player.a1.challenges[22]= n(0)
             resource() { return player.i.points },
             unlocked() { return  hasAchievement('cj',37) }
         },
+12: {
+            name() { return '挑战6'},
+            challengeDescription() { return '同时进行前3个挑战且不能获得相应分数，削弱u2,u3,o1,q1，退出挑战时基于挑战内最高i获得分数.'},
+            rewardDescription() { 
+                return `分数:${format(challengeEffect("i", 12))}，加成撕裂资源的i基数加成`
+            },
+            rewardEffect() {
+let g=n(0)
+              if(inChallenge("i",12))  g=g.max(player.i.points)
 
+return g.max(player.i.challenges[12])
+            },
+            goal: 0,
+ goalDescription() {
+                return "更多i"
+            },
+
+            onExit() {
+                player.i.challenges[12] = player.i.points.max(challengeEffect("i", 12))
+            },
+onEnter() {
+              
+player.i.points = n(0)
+ doReset(this.layer,true)
+player.a1.challenges[11]= n(0)
+player.a1.challenges[12]= n(0)
+player.a1.challenges[21]= n(0)
+player.a1.challenges[22]= n(0)
+            },
+            completionLimit: "1F9999",
+            canComplete() { return true },
+            resource() { return player.i.points },
+            unlocked() { return  hasAchievement('cj',43) }
+        },
     },
     microtabs: {
         tab: {

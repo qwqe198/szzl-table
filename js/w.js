@@ -16,7 +16,7 @@ addLayer("w", {
     baseResourceI18N: "点数", // Second name of the baseResource for internationalization (i18n) if internationalizationMod is enabled
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.4, // Prestige currency exponent
+    exponent() { return  hasAchievement('cj',42) ? new Decimal(0.125) : new Decimal(0.4) },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
 if(hasUpgrade("a1",15))g=g.mul(upgradeEffect("a1",15))
@@ -46,7 +46,7 @@ if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().add(1).root(2.5).sub(1))
             effect() {
                 var g = player.w.points.add(1).log10().add(1.25).pow(5)
 g = g.pow(buyableEffect('p', 11))
-if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("i",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -98,7 +98,7 @@ if(g.gte(2.5)&&!hasAchievement('cj',26))g=g.div(2.5).add(1.5)
         },
     },
     hotkeys: [
-        {key: "w", description: "w: 进行w重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "w", description: "w: 进行w重置", onPress(){if (canReset(this.layer)&&!(inChallenge("i",12)||inChallenge("a1",21))) doReset(this.layer)}},
     ],
     microtabs:{
         tab:{
@@ -116,7 +116,7 @@ if(g.gte(2.5)&&!hasAchievement('cj',26))g=g.div(2.5).add(1.5)
     tabFormat: [
        ["display-text", function() { return getPointsDisplay() }],
        "main-display",
-       "prestige-button",
+    function() { return  hasAchievement("cj", 42)&&(inChallenge("a1",21)||inChallenge("i",12))?"": "prestige-button"},
       
      "buyables",
                 "upgrades",

@@ -12,11 +12,11 @@ addLayer("a1", {
  requires() { return  hasAchievement('cj',33) ? new Decimal(1) : new Decimal(6.02e23) },
     resource: "α", // Name of prestige currency
     resourceI18N: "声望点", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
-    baseResource: "s", // Name of resource prestige is based on
+    baseResource() { hasAchievement('cj',42) ? "w" :"s"}, // Name of resource prestige is based on
     baseResourceI18N: "点数", // Second name of the baseResource for internationalization (i18n) if internationalizationMod is enabled
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+    baseAmount() {return hasAchievement('cj',42) ? player.w.points :player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.075, // Prestige currency exponent
+    exponent() { return  hasAchievement('cj',42) ? new Decimal(0.055) : new Decimal(0.075) },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         g = new Decimal(1)
 g=g.mul((tmp["i"].buyables[13].eff1))
@@ -54,7 +54,7 @@ g = g.mul(tmp["i"].buyables[13].eff2)
             effect() {
                 var g = player.a1.points.add(1).log10().add(2).pow(5)
 g = g.pow(buyableEffect('a1', 11))
-if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("i",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -155,7 +155,7 @@ if(hasAchievement('cj',28))g=n(5).pow(x.pow(1.3))
         },
     },
     hotkeys: [
-        {key: "A", description: "Shift+a: 进行α重置", onPress(){if (canReset(this.layer))doReset(this.layer)}},
+        {key: "A", description: "Shift+a: 进行α重置", onPress(){if (canReset(this.layer)&&!(inChallenge("i",12)||inChallenge("a1",21)))doReset(this.layer)}},
     ],
     microtabs:{
         tab:{
@@ -189,16 +189,16 @@ return g.max(player.a1.challenges[11])
                 return "更多s"
             },
             onExit() {
-                player.a1.challenges[11] = player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 11)).max(0)
+                player.a1.challenges[11] = inChallenge("i",12)?0:player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 11)).max(0)
             },
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',23) }
+            unlocked() { return  hasAchievement('cj',23)&&!inChallenge("i",12) }
         },
 12: {
             name() { return '挑战2'},
-            challengeDescription() { return 'b对s的加成^0.2,p^0.25,退出挑战时基于挑战内最高s获得分数.'},
+            challengeDescription() { return 'b对s的加成和p的基础获取^0.2,退出挑战时基于挑战内最高s获得分数.'},
             rewardDescription() { 
                 return `分数:${format(challengeEffect("a1", 12))}，加成α获取`
             },
@@ -213,16 +213,16 @@ return g.max(player.a1.challenges[12])
                 return "更多s"
             },
             onExit() {
-                player.a1.challenges[12] = player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 12)).max(0)
+                player.a1.challenges[12] = inChallenge("i",12)?0:player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 12)).max(0)
             },
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',25) }
+            unlocked() { return  hasAchievement('cj',25)&&!inChallenge("i",12) }
         },
 21: {
             name() { return '挑战3'},
-            challengeDescription() { return 's^0.5,你不能获得p,退出挑战时基于挑战内最高s获得分数.'},
+            challengeDescription() { return  hasAchievement('cj',42) ? "s获取开(p重置次数+1)次根,禁用每秒获得p和w,α重置,退出挑战时基于挑战内最高s获得分数." :'s^0.5,你不能获得p,退出挑战时基于挑战内最高s获得分数.'},
             rewardDescription() { 
                 return `分数:${format(challengeEffect("a1", 21))}，大幅加成a获取`
             },
@@ -237,12 +237,12 @@ return g.max(player.a1.challenges[21])
                 return "更多s"
             },
             onExit() {
-                player.a1.challenges[21] = player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 21)).max(0)
+                player.a1.challenges[21] = inChallenge("i",12)?0:player.points.add(1).log10().div(38.53).max(challengeEffect("a1", 21)).max(0)
             },
             completionLimit: "1F9999",
             canComplete() { return true },
             resource() { return player.points },
-            unlocked() { return  hasAchievement('cj',26) }
+            unlocked() { return  hasAchievement('cj',26)&&!inChallenge("i",12) }
         },
 22: {
             name() { return '挑战4'},
@@ -273,7 +273,7 @@ return g.max(player.a1.challenges[22])
        ["display-text", function() { return getPointsDisplay() }],
 
        "main-display",
-       "prestige-button",
+    function() { return  hasAchievement("cj", 42)&&inChallenge("a",21)||inChallenge("i",12)?"": "prestige-button"},
    
 ["display-text", () =>
                    hasAchievement("cj", 23) ?`挑战1到4内p,w,α对s的加成失效,每38.53个数量级的s为1分数`:``,

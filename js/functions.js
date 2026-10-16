@@ -64,7 +64,7 @@ function expRootSoftcap(num, start, power) {
     if (num.lte(start)) return num;
     const logNum = num.log10();
     const logStart = start.log10();
-      return ten.pow(logNum.root(power).mul(logStart.pow(one.sub(one.div(power)))))
+      return n(10).pow(logNum.root(power).mul(logStart.pow(n(1).sub(n(1).div(power)))))
 }
 //修改class属性
 function setClass(id,toClass = []){

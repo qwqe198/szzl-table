@@ -53,7 +53,7 @@ function changelog(){
 			<h3>v3.0 - 史无前例的改动</h3><br>
 - 本游戏为数字增量的mod（原版在iwanna上），原作者是暗，qq群号622963897<br>
 - 注：本改版有部分内容和原游戏不一样<br>
-				- 当前残局：a29<br>
+				- 当前残局：a32<br>
 
 			<br><br>`
 		
@@ -91,7 +91,8 @@ if(hasUpgrade("a1",11))g=g.mul(upgradeEffect("a1",11))
 if(hasAchievement("cj",23))g=g.mul(10)
 if(hasAchievement("cj",28))g=g.mul(layers.i.i1eff())
 g=powsoftcap(g,"1e1000",2)
-if(inChallenge("a1",21))g=g.pow(0.5)
+g=powsoftcap(g,"1e1140000",2)
+if(inChallenge("a1",21)||inChallenge("i",12))g=g.root(hasAchievement("cj",42)?player.p.czcs.add(1):0.5)
 if(inChallenge("a1",22))g=g.add(10).log10().div(n(1.075).log10()).pow(2)
 	return g
 }

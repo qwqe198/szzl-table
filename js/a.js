@@ -38,7 +38,7 @@ if(hasAchievement('cj',25))g = g.mul((layers.a1.c3eff().add(1)))
             effect() {
                 var g = player.a.points.add(1).log10().add(1.25).pow(3.5)
 g = g.pow(buyableEffect('w', 11))
-if(inChallenge("a1",11))g=g.pow(0.3)
+if(inChallenge("a1",11)||inChallenge("i",12))g=g.pow(0.3)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },

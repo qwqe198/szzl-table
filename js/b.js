@@ -28,7 +28,7 @@ if(getBuyableAmount("i", 11).gte(1))g=g.mul((tmp["i"].buyables[11].eff2))
     gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
 if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().mul(tmp["i"].buyables[11].eff1)))
-if(hasAchievement("cj",34))g=g.mul(player.i.points.add(1).pow(0.2))
+if(hasAchievement("cj",34))g=g.mul(player.i.points.add(1).pow(hasAchievement("cj",42)?0.6:0.2))
         return g
     },
 buyables: {
@@ -61,7 +61,7 @@ if(hasAchievement('cj',17))g=n(10).pow(x.pow(1.3))
             effect() {
                 var g = player.b.points.add(1).log10().add(1.25).pow(4)
 g = g.pow(buyableEffect('w', 11))
-if(inChallenge("a1",12))g=g.pow(0.2)
+if(inChallenge("a1",12)||inChallenge("i",12))g=g.pow(0.2)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },

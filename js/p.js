@@ -7,7 +7,8 @@ addLayer("p", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
-    }},
+ czcs: new Decimal(0),
+   }},
     color: "#13dcc5",
     requires() { return hasAchievement('cj',22) ? new Decimal(1): new Decimal(1e7) },
     resource: "p", // Name of prestige currency
@@ -24,13 +25,13 @@ g = g.mul(buyableEffect('b', 11))
 if(hasUpgrade("w",11))g=g.mul(upgradeEffect("w",11))
 if(hasUpgrade("a1",14))g=g.mul(upgradeEffect("a1",14))
 if(hasAchievement("cj",29))g=g.mul(layers.i.i2eff())
-if(inChallenge("a1",21))g=n(0)
+if(inChallenge("a1",21)&&!hasAchievement("cj",42))g=n(0)
         return g
     },
    gainExp() { // Calculate the exponent on main currency from bonuses
        g = new Decimal(1)
 if(hasAchievement('cj',26))g = g.add((layers.a1.c4eff().add(1).root(2.5).sub(1)))
-if(inChallenge("a1",12))g=g.mul(0.2)
+if(inChallenge("a1",12)||inChallenge("i",12))g=g.mul(0.2)
         return g
     },
     upgrades: {
@@ -39,7 +40,7 @@ if(inChallenge("a1",12))g=g.mul(0.2)
             effect() {
                 var g = player.p.points.add(2).log10().add(1.25).pow(6)
 g = g.pow(buyableEffect('p', 11))
-if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
+if(inChallenge("a1",11)||inChallenge("a1",12)||inChallenge("i",12)||inChallenge("a1",21)||inChallenge("a1",22))g=n(1)
                 return g
             },
             effectDisplay() { return `x${format(this.effect())}` },
@@ -110,7 +111,10 @@ if(hasAchievement('cj',25))c=n(1.5).pow(x.pow(1.5))
        ["display-text", function() { return getPointsDisplay() }],
        "main-display",
        "prestige-button",
-
+["display-text", () =>
+                   hasAchievement("cj", 42) ?`p重置次数:${format(player.p.czcs)}`:``,
+                    { "font-size": "20px" }
+                ],
 "buyables",
                 "upgrades",
     ],
@@ -121,6 +125,10 @@ if (hasAchievement("cj", 29)) setBuyableAmount(this.layer, 11, player.p.points.a
 
     },
  passiveGeneration() {
-        return getBuyableAmount("i", 12).gte(1) ? new Decimal(1) : new Decimal(0)
+        return getBuyableAmount("i", 12).gte(1)&&!(hasAchievement("cj",42)&&(inChallenge("a1",21)||inChallenge("i",12)))? new Decimal(1) : new Decimal(0)
     },
+onPrestige() {
+player.p.czcs = player.p.czcs.add(1)
+
+}
 })
